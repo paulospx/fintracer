@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="120"
+   height="26"
+   viewBox="0 0 120 26"
+   version="1.1"
+   id="svg897"
+   sodipodi:docname="logo-asr-aptitude.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs901" />
+  <sodipodi:namedview
+     id="namedview899"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="10.433333"
+     inkscape:cx="61.389778"
+     inkscape:cy="17.252397"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g895" />
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     id="g895">
+    <g
+       id="g893">
+      <g
+         id="g891">
+        <g
+           id="g889">
+          <path
+             fill="#000"
+             d="M11.146 11.007V9.678H8.133v1.39h-.055c-.625-.915-1.913-1.59-3.074-1.59-2.791 0-4.477 2.086-4.477 4.768 0 2.685 1.686 4.808 4.477 4.808 1.16 0 2.45-.655 3.074-1.59h.055v1.393h3.013v-1.332H9.623v-6.518h1.523zm-5.981 6.697c-2.056 0-2.952-1.689-2.952-3.458 0-1.71.896-3.419 2.952-3.419 1.464 0 2.934 1.235 2.934 3.419 0 2.186-1.47 3.458-2.934 3.458zM16.573 16.432c-.68 0-1.23.575-1.23 1.272 0 .715.55 1.252 1.23 1.252.688 0 1.256-.537 1.256-1.252 0-.697-.568-1.272-1.256-1.272zM30.33 16.233c0-3.954-6.422-1.848-6.422-4.153 0-1.03.943-1.252 2.09-1.252.534 0 1.024.16 1.432.438.432.278.748.695.898 1.212h1.395v-2.8H28.41v.852c-.763-.653-1.74-1.05-2.74-1.05-1.659 0-3.286.734-3.286 2.642 0 4.39 6.418 1.908 6.418 4.25 0 1.252-1.432 1.332-2.213 1.332-1.078 0-2.48-.498-2.894-1.827h-1.311v2.979h1.311v-.915c.763.878 1.994 1.113 3.108 1.113 1.8 0 3.526-.774 3.526-2.821M35.804 16.433c-.684 0-1.234.574-1.234 1.27 0 .716.55 1.253 1.234 1.253.685 0 1.25-.537 1.25-1.252 0-.697-.565-1.271-1.25-1.271M48.642 10.987V9.48c-1.545 0-2.834.536-3.483 2.006h-.037V9.678h-3.09v1.33h1.504v6.517h-1.505v1.331h4.87v-1.33h-1.683v-3.142c0-2.322.65-3.198 3.424-3.397M52.789 18.956c.687 0 1.25-.537 1.25-1.252 0-.696-.563-1.272-1.25-1.272-.682 0-1.23.576-1.23 1.272 0 .715.548 1.252 1.23 1.252"
+             id="path883"
+             transform="translate(-592 -511) translate(568 426) translate(24 85)" />
+          <path
+             fill="#949496"
+             d="M63.61 23.681L63.941 23.681 63.941 4.738 63.61 4.738z"
+             id="path885"
+             transform="translate(-592 -511) translate(568 426) translate(24 85)" />
+        </g>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14.6667px;line-height:1.25;font-family:SenticoSansDT;-inkscape-font-specification:SenticoSansDT;fill:#ff409b;fill-opacity:1"
+       x="65.750801"
+       y="16.964857"
+       id="text18995"><tspan
+         sodipodi:role="line"
+         id="tspan18993"
+         x="65.750801"
+         y="16.964857"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.6667px;font-family:'Kaushan Script';-inkscape-font-specification:'Kaushan Script'">MCP</tspan></text>
+  </g>
+</svg>

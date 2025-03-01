@@ -1,0 +1,68 @@
+﻿body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+footer {
+    background-color:#FFF;
+}
+
+h1, h2, h3, h4 {
+    font-family: Memphis;
+}
+
+.navbar-nav a {
+    font-family: Memphis;
+    font-size: larger;
+}
+
+.btn-primary, .btn-primary:hover {
+    color: #fff;
+    background-color: #FF409B;
+    border-color: #FF409B;
+}
+
+.btn-secondary, .btn-secondary:hover {
+    color: #fff;
+    background-color: #FFB900;
+    border-color: #FFB900;
+}
+
+.footer {
+    font-family: Memphis;
+}
+
+table th {
+    font-family: Memphis;
+}
+
+a {
+    color: #FF409B;
+}
+
+a:hover {
+    color: #FF409B;
+}
+
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FFB900;
+    color: #FFFFFF;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+a.button:hover {
+    background-color: #FFF8E3;
+    color: #000000;
+}
+
+
+label {
+    margin-top: 10px;
+}

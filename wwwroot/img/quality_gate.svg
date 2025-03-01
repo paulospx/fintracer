@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 350 262.5"
+   width="128"
+   height="96"
+   version="1.1"
+   id="svg866"
+   sodipodi:docname="quality_gate.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs870" />
+  <sodipodi:namedview
+     id="namedview868"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="5.2890625"
+     inkscape:cx="64"
+     inkscape:cy="48.023634"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg866" />
+  <!-- CMRE QUALITY GATE PASS -->
+  <path
+     fill="#cfd3d7"
+     d="M328.4 260.4H21.5c-11.2 0-20.4-9.2-20.4-20.4V21.9c0-11.2 9-20.4 20.4-20.4h307.1c11.2 0 20.4 9.2 20.4 20.4V240c-.2 11.2-9.2 20.4-20.6 20.4zM21.5 3.3c-10.3 0-18.6 8.3-18.6 18.6V240c0 10.3 8.3 18.6 18.6 18.6h307.1c10.3 0 18.6-8.3 18.6-18.6V21.9c0-10.3-8.3-18.6-18.6-18.6H21.5z"
+     id="path850" />
+  <path
+     fill="#29be4c"
+     d="M 249.95501,162.9 H 102.93165 c -21.781249,0 -39.478503,-14.4 -39.478503,-31.9 0,-17.6 17.821018,-31.9 39.478503,-31.9 h 147.02336 c 21.78123,0 39.47849,14.4 39.47849,31.9 0,17.5 -17.82101,31.9 -39.47849,31.9 z"
+     id="path854"
+     style="stroke-width:1.11246" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:43.75px;line-height:1.25;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';text-align:center;text-anchor:middle;stroke-width:2.73438"
+     x="180.28545"
+     y="17.577551"
+     id="text3069"><tspan
+       sodipodi:role="line"
+       id="tspan3067"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:43.75px;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';text-align:center;text-anchor:middle;stroke-width:2.73438"
+       x="180.28545"
+       y="17.577551" /><tspan
+       sodipodi:role="line"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:43.75px;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';text-align:center;text-anchor:middle;stroke-width:2.73438"
+       x="180.28545"
+       y="72.265053"
+       id="tspan12431">Run Status</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:51.0418px;line-height:1.25;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';stroke-width:2.73438"
+     x="179.39439"
+     y="215.58344"
+     id="text21385"><tspan
+       sodipodi:role="line"
+       id="tspan21383"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Memphis-Bold;-inkscape-font-specification:Memphis-Bold;stroke-width:2.73438"
+       x="179.39439"
+       y="215.58344">cmre</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:51.0418px;line-height:1.25;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';stroke-width:2.73438"
+     x="57.385521"
+     y="215.58345"
+     id="text30557"><tspan
+       sodipodi:role="line"
+       id="tspan30555"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Memphis Medium';-inkscape-font-specification:'Memphis Medium, ';stroke-width:2.73438"
+       x="57.385521"
+       y="215.58345">a.s.r.</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:47.3958px;line-height:1.25;font-family:SenticoSansDT;-inkscape-font-specification:SenticoSansDT;fill:#ffffff;fill-opacity:1;stroke-width:2.73438"
+     x="177.88231"
+     y="146.82423"
+     id="text42157"><tspan
+       sodipodi:role="line"
+       id="tspan42155"
+       style="font-size:47.3958px;text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:2.73438"
+       x="177.88231"
+       y="146.82423">CLOSED</tspan></text>
+</svg>

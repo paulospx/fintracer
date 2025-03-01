@@ -1,0 +1,121 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+@font-face {
+    font-family:Memphis;
+    src: url(../fonts/Memphis-Medium.ttf);
+}
+
+@font-face {
+    font-family: Avenir;
+    src: url(../fonts/AvenirLTStd-Book.otf);
+}
+
+.navbar {
+    font-family: Memphis;
+}
+
+body {
+    font-family: Avenir;
+    color:#2a292e;
+}
+
+.badge {
+    font-size:1.0em!important;
+    width:100%;
+}
+
+th {
+    vertical-align:top;
+}
+
+/*
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #FFF8E3;
+}
+*/
+
+
+/*
+    WORKFLOW COLOURS
+*/
+/* light-blue */
+.wf-draft {
+    border-radius: 0.25rem;
+    background-color: #3498db;
+}
+/* orange */
+.wf-in-review {
+    border-radius: 0.25rem;
+    background-color: #f39c12;
+}
+/* yellow */
+.wf-pending-approval {
+    border-radius: 0.25rem;
+    background-color: #f1c40f;
+}
+/* green */
+.wf-approved {
+    border-radius: 0.25rem;
+    background-color: #2ecc71;
+}
+/* red */
+.wf-in-progress {
+    border-radius: 0.25rem;
+    background-color: #e74c3c;
+}
+/* grey */
+.wf-on-hold {
+    border-radius: 0.25rem;
+    background-color: #95a5a6;
+}
+/* dark orange */
+.wf-needs-attention {
+    border-radius: 0.25rem;
+    background-color: #e67e22;
+}
+/* emerald green */
+.wf-sucessful {
+    border-radius: 0.25rem;
+    background-color: #27ae60;
+}
+.wf-successful {
+    border-radius: 0.25rem;
+    background-color: #27ae60;
+}
+/* silver */
+.wf-closed {
+    border-radius: 0.25rem;
+    background-color: #7f8c8d;
+}
+/* dark red */
+.wf-canceled {
+    border-radius: 0.25rem;
+    background-color: #c0392b;
+}
+/* dark blue */
+.wf-archived {
+    border-radius: 0.25rem;
+    background-color: #34495e;
+}
+
+
+h1, h2, h3, h4 {
+    font-family: Memphis !important;
+}
