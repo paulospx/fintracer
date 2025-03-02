@@ -4,56 +4,7 @@
 
 
 <style>
-    .highcharts-figure,
-    .highcharts-data-table table {
-        min-width: 360px;
-        max-width: 900px;
-        margin: 1em auto;
-    }
 
-    .highcharts-data-table table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #ebebeb;
-        margin: 10px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #555;
-    }
-
-    .highcharts-data-table th {
-        font-weight: 600;
-        padding: 0.5em;
-    }
-
-    .highcharts-data-table td,
-    .highcharts-data-table th,
-    .highcharts-data-table caption {
-        padding: 0.5em;
-    }
-
-    .highcharts-data-table thead tr,
-    .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
-    }
-
-    .highcharts-data-table tr:hover {
-        background: #f1f7ff;
-    }
-
-    .highcharts-description {
-        margin: 0.3rem 10px;
-    }
-
-    text.highcharts-title {
-        font-family: Memphis !important;
-    }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="~/js/highcharts/highcharts.js"></script>
@@ -72,7 +23,7 @@
         <label class="input-group-text" for="inputGroupSelect01">Files</label>
     </div>
     <select class="custom-select" id="files" style="width:300px">
-        <option selected>Choose...</option>
+
     </select>
 </div>
 
@@ -82,8 +33,6 @@
         By visualizing these curves side by side, the chart highlights trends, discrepancies, and intersections that offer valuable insights into market conditions, interest rate dynamics, and financial strategy. This tool is ideal for analysts, traders, and decision-makers looking to make data-driven decisions based on detailed financial curve analysis.
     </p>
 </figure>
-
-
 
     <div class="row">
         <div class="col-sm">
@@ -120,87 +69,86 @@
 
     function updateChart() {
         var names = $("#curves").val().join(',');
-        console.log(names);
         (async () => {
             const data = await fetch(
                 '/ChartCompare/GetSerie?name=' + names
             ).then(response => response.json());
             console.log(data);
-                Highcharts.chart('container', {
-        title: {
-            text: 'Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments',
-            align: 'left'
-        },
-
-        subtitle: {
-            text: 'By a.s.r. ARM Team.',
-            align: 'left'
-        },
-
-        yAxis: {
-            title: {
-                text: 'Value %'
-            }
-        },
-
-        xAxis: {
-            title: {
-                text: 'Maturities'
-            },
-            accessibility: {
-                rangeDescription: 'Range: 2010 to 2022'
-            },
-                    categories:
-           [
-               '1',
-               '2',
-               '3',
-               '4',
-               '5',
-               '6',
-               '7',
-               '8',
-               '9',
-               '10',
-               '9',
-               '12',
-               '13'
-
-           ]
-        },
-
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
+            Highcharts.chart('container', {
+                title: {
+                    text: 'Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments',
+                    align: 'left'
                 },
-                pointStart: 0
-            }
-        },
 
-        series: data ,
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
+                subtitle: {
+                    text: 'By a.s.r. ARM Team.',
+                    align: 'left'
                 },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
+
+                yAxis: {
+                    title: {
+                        text: 'Value %'
                     }
+                },
+
+                xAxis: {
+                    title: {
+                        text: 'Maturities'
+                    },
+                    accessibility: {
+                        rangeDescription: 'Range: 2010 to 2022'
+                    },
+                            categories:
+                    [
+                        '1',
+                        '2',
+                        '3',
+                        '4',
+                        '5',
+                        '6',
+                        '7',
+                        '8',
+                        '9',
+                        '10',
+                        '9',
+                        '12',
+                        '13'
+
+                    ]
+                },
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        pointStart: 0
+                    }
+                },
+
+                series: data ,
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
                 }
-            }]
-        }
-    });
+            });
         })();
 
     }
@@ -297,8 +245,8 @@
                     text : item
                 }));
             });
-            console.log(cleanedList.join(','));
-            console.log(cleanedList);
+            // console.log(cleanedList.join(','));
+            // console.log(cleanedList);
         });
 
         $.get("/ChartCompare/GetFiles", function(result){
@@ -309,7 +257,6 @@
                 }));
             });
         });
-
     });
 
 </script>

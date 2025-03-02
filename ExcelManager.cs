@@ -177,5 +177,34 @@ namespace FinTracer
             }
             return resultData;
         }
+
+
+        /// <summary>
+        /// Searches for files in the specified directory and its subdirectories that match the given pattern.
+        /// </summary>
+        /// <param name="path">The root directory to search in.</param>
+        /// <param name="pattern">The search pattern (e.g., "*.txt").</param>
+        /// <returns>A list of filenames that match the search criteria.</returns>
+        public static List<string> GetFileNames(string path, string pattern)
+        {
+            List<string> fileNames = new List<string>();
+
+            try
+            {
+                if (!Directory.Exists(path))
+                {
+                    Console.WriteLine("The specified path does not exist.");
+                    return fileNames;
+                }
+
+                fileNames.AddRange(Directory.GetFiles(path, pattern, SearchOption.AllDirectories));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+
+            return fileNames;
+        }
     }
 }
