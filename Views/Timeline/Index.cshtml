@@ -22,7 +22,7 @@
                                     <div class="card-body p-xl-4">
                                         <h2 class="card-title mb-2">@t.Title</h2>
                                         <h6 class="card-subtitle text-secondary mb-3">@t.SubTitle</h6>
-                                        <p class="card-text m-0">@t.TimeLineId</p>
+                                        <p class="card-text m-0"><div id="@t.TimeLineId.ToString().Replace("-",string.Empty)"></div></p>
                                     </div>
                                 </div>
                             </div>
@@ -40,77 +40,71 @@
         colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // Custom palette
     });
 
-    Highcharts.chart('container', {
-        title: {
-            text: 'Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments',
-            align: 'left'
-        },
+    $(document).ready(function() {
+        $.get("/Timeline/Json", function(result){
+            $.each(result, function (i, item) {
+                var id = item.timeLineId.replaceAll("-","");
 
-        subtitle: {
-            text: 'By a.s.r. ARM Team.',
-            align: 'left'
-        },
+                Highcharts.chart(id, {
+                    title: {
+                        text: item.title,
+                        align: 'left'
+                    },
 
-        yAxis: {
-            title: {
-                text: 'Value %'
-            }
-        },
+                    subtitle: {
+                        text: 'By a.s.r. ARM Team.',
+                        align: 'left'
+                    },
 
-        xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: 2010 to 2022'
-            },
-                    categories:
-           [
-               '1',
-               '2',
-               '3',
-               '4',
-               '5',
-               '6',
-               '7',
-               '8',
-               '9',
-               '10',
-               '9',
-               '12',
-               '13'
+                    yAxis: {
+                        title: {
+                            text: 'Value %'
+                        }
+                    },
 
-           ]
-        },
+                    xAxis: {
+                        accessibility: {
+                            rangeDescription: 'Range: 2010 to 2022'
+                        },
+                        categories: []
+                    },
 
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-
-        series: [{"name":"swap.cra.zero.w220","data":[0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001345,0.001321,0.0013123,0.001324,0.001324,0.001345]},{"name":"swap.eur_stylized-1.zero.down330","data":[0.006434,0.0041231,0.003356745,0.004216075,0.0054,0.006434,0.0041231,0.003356745,0.004216075,0.0054,0.006434,0.0041231,0.003356745,0.004216075,0.0054,0.006434,0.0041231,0.003356745,0.006434,0.0041231,0.0054,0.006434,0.0041231,0.003356745,0.004216075,0.0054,0.006434,0.0041231,0.003356745,0.004216075,0.0054,0.006434,0.0041231,0.003356745,0.006434,0.0041231,0.0054,0.006434]},{"name":"swap.cra.zero.y-min0-delta","data":[0.00129,0.002043,0.004212,0.003012,0.004001,0.008012,0.007101,0.0059,0.00129,0.002043,0.004212,0.003012,0.004001,0.008012,0.007101,0.0059,0.00129,0.002043,0.004212,0.003012,0.004001,0.008012,0.007101,0.0059,0.00129,0.002043,0.004212,0.003012,0.004001,0.008012,0.007101,0.0059,0.00129,0.002043,0.004212,0.00129,0.002043,0.004212]}] ,
-
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                },
-                chartOptions: {
                     legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 0
+                        }
+                    },
+
+                    series: JSON.parse(item.series),
+
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
                     }
-                }
-            }]
-        }
+                });
+
+                console.log(item);
+            });
+        });
     });
 
 </script>

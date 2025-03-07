@@ -1,4 +1,4 @@
-# FinTracer
+﻿# FinTracer
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
@@ -80,6 +80,25 @@ Contributions are welcome! Follow these steps to contribute:
    git push origin feature-name
    ```
 5. Open a pull request.
+
+## File Transfers
+
+### **Updated Color Summary Table**
+
+|**State**|**Emoji**|**Color Name**|**RGB**|**HEX**|
+|---|---|---|---|---|
+|Draft|✍️|Gray|`rgb(169, 169, 169)`|`#A9A9A9`|
+|Waiting|⏳|Light Blue|`rgb(135, 206, 250)`|`#87CEFA`|
+|Validation|🕵️‍♂️|Blue|`rgb(0, 102, 204)`|`#0066CC`|
+|Integrity Check|✅|Green|`rgb(34, 139, 34)`|`#228B22`|
+|Transfer in Progress|📤|Yellow|`rgb(255, 204, 0)`|`#FFCC00`|
+|MD5 Check|🔍|Orange|`rgb(255, 165, 0)`|`#FFA500`|
+|Transfer Successful|🎉|Bright Green|`rgb(50, 205, 50)`|`#32CD32`|
+|Transfer Error|❌|Red|`rgb(220, 20, 60)`|`#DC143C`|
+
+---
+
+This should cover all states with a clear progression and consistent visual hierarchy. Let me know if you’d like help visualizing or refining this further!
 
 ## Database 
 

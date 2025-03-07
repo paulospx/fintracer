@@ -1,0 +1,89 @@
+﻿@model FinTracer.Models.FileTransfer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Transfer</h1>
+
+<h4>FileTransfer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SourceFile" class="control-label"></label>
+                <input asp-for="SourceFile" class="form-control" />
+                <span asp-validation-for="SourceFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceCreatedAt" class="control-label"></label>
+                <input asp-for="SourceCreatedAt" class="form-control" />
+                <span asp-validation-for="SourceCreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceSize" class="control-label"></label>
+                <input asp-for="SourceSize" class="form-control" />
+                <span asp-validation-for="SourceSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceMd5" class="control-label"></label>
+                <input asp-for="SourceMd5" class="form-control" />
+                <span asp-validation-for="SourceMd5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetFile" class="control-label"></label>
+                <input asp-for="TargetFile" class="form-control" />
+                <span asp-validation-for="TargetFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetCreatedAt" class="control-label"></label>
+                <input asp-for="TargetCreatedAt" class="form-control" />
+                <span asp-validation-for="TargetCreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetSize" class="control-label"></label>
+                <input asp-for="TargetSize" class="form-control" />
+                <span asp-validation-for="TargetSize" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetMd5" class="control-label"></label>
+                <input asp-for="TargetMd5" class="form-control" />
+                <span asp-validation-for="TargetMd5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastCopied" class="control-label"></label>
+                <input asp-for="LastCopied" class="form-control" />
+                <span asp-validation-for="LastCopied" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsSelected" /> @Html.DisplayNameFor(model => model.IsSelected)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduledToCopy" class="control-label"></label>
+                <input asp-for="ScheduledToCopy" class="form-control" />
+                <span asp-validation-for="ScheduledToCopy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

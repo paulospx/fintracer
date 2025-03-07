@@ -91,7 +91,7 @@
             ).then(response => response.json());
             
             t.Series = JSON.stringify(data);
-            t.Catalog = ['1','2','3','4','5','6','7','8','9','10'],
+            t.Category = ['1','2','3','4','5','6','7','8','9','10'];
             Highcharts.chart('container', {
                 title: {
                     text: t.Title,
@@ -243,14 +243,14 @@
             });
         });
 
-        $.get("/ChartCompare/GetFiles", function(result){
-            $.each(result, function (i, item) {
-                $('#files').append($('<option>', {
-                    value: item,
-                    text : item
-                }));
+            $.get("/ChartCompare/GetFiles", function(result){
+                $.each(result, function (i, item) {
+                    $('#files').append($('<option>', {
+                        value: item,
+                        text : item
+                    }));
+                });
             });
-        });
     });
 
 </script>
