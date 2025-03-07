@@ -61,6 +61,12 @@ namespace FinTracer.Controllers
             return View();
         }
 
+
+        public ActionResult Scatter()
+        {
+            return View();
+        }
+
         public ActionResult Details(int id)
         {
             return View();

@@ -81,6 +81,16 @@ Contributions are welcome! Follow these steps to contribute:
    ```
 5. Open a pull request.
 
+## Database 
+
+Database generation
+```
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

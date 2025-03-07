@@ -1,83 +1,155 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using FinTracer.Models;
 
 namespace FinTracer.Controllers
 {
     public class TimelineController : Controller
     {
-        // GET: TimelineController
-        public ActionResult Index()
+        private readonly FinTraceContext _context;
+
+        public TimelineController(FinTraceContext context)
         {
-            return View();
+            _context = context;
         }
 
-        // GET: TimelineController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Timelines.OrderByDescending(t => t.CreatedAt).ToListAsync());
         }
 
-        // GET: TimelineController/Create
-        public ActionResult Create()
+        public async Task<IActionResult> Json()
         {
-            return View();
+            return Json(await _context.Timelines.OrderByDescending(t => t.CreatedAt).ToListAsync());
         }
 
-        // POST: TimelineController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Details(Guid? id)
         {
-            try
+            if (id == null)
             {
+                return NotFound();
+            }
+
+            var timeline = await _context.Timelines
+                .FirstOrDefaultAsync(m => m.TimeLineId == id);
+            if (timeline == null)
+            {
+                return NotFound();
+            }
+
+            return View(timeline);
+        }
+
+        // GET: Timeline/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Timeline/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
+        {
+            if (ModelState.IsValid)
+            {
+                timeline.TimeLineId = Guid.NewGuid();
+                _context.Add(timeline);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(timeline);
         }
 
-        // GET: TimelineController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Timeline/Edit/5
+        public async Task<IActionResult> Edit(Guid? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var timeline = await _context.Timelines.FindAsync(id);
+            if (timeline == null)
+            {
+                return NotFound();
+            }
+            return View(timeline);
         }
 
-        // POST: TimelineController/Edit/5
+        // POST: Timeline/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Guid id, [Bind("TimeLineId,CreatedAt,Username,Title,Notes,ChartType,Settings,Enabled")] Timeline timeline)
         {
-            try
+            if (id != timeline.TimeLineId)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(timeline);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TimelineExists(timeline.TimeLineId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(timeline);
         }
 
-        // GET: TimelineController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Timeline/Delete/5
+        public async Task<IActionResult> Delete(Guid? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var timeline = await _context.Timelines
+                .FirstOrDefaultAsync(m => m.TimeLineId == id);
+            if (timeline == null)
+            {
+                return NotFound();
+            }
+
+            return View(timeline);
         }
 
-        // POST: TimelineController/Delete/5
-        [HttpPost]
+        // POST: Timeline/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            try
+            var timeline = await _context.Timelines.FindAsync(id);
+            if (timeline != null)
             {
-                return RedirectToAction(nameof(Index));
+                _context.Timelines.Remove(timeline);
             }
-            catch
-            {
-                return View();
-            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool TimelineExists(Guid id)
+        {
+            return _context.Timelines.Any(e => e.TimeLineId == id);
         }
     }
 }

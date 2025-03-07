@@ -70,14 +70,12 @@ namespace FinTracer
                 }
             }
 
-            // Prepare the result object
             var result = new ColumnValues
             {
                 Name = columnName,
                 Data = columnValues.ToArray()
             };
 
-            // Return the result as a JSON string
             return result;
         }
 
@@ -86,14 +84,11 @@ namespace FinTracer
         {
             var fileNames = new List<string>();
 
-            // Ensure the directory exists
             if (!Directory.Exists(directoryPath))
                 throw new DirectoryNotFoundException($"The directory at {directoryPath} does not exist.");
 
-            // Get all files with the specified extension (case-insensitive)
             var files = Directory.GetFiles(directoryPath, $"*.{fileExtension}", SearchOption.TopDirectoryOnly);
 
-            // Extract only file names from full paths
             foreach (var file in files)
             {
                 fileNames.Add(Path.GetFileName(file));
@@ -140,7 +135,6 @@ namespace FinTracer
                     }
                 }
 
-                // Check if any column name was not found
                 foreach (var colName in columnNamesArray)
                 {
                     if (!columnIndexes.ContainsKey(colName.Trim()))

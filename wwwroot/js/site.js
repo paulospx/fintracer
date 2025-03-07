@@ -2,7 +2,22 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+function generateTimestamp(format = "ISO") {
+    const now = new Date();
 
+    switch (format.toUpperCase()) {
+        case "ISO":
+            return now.toISOString(); // e.g., "2025-03-06T10:15:30.000Z"
+        case "UTC":
+            return now.toUTCString(); // e.g., "Thu, 06 Mar 2025 10:15:30 GMT"
+        case "LOCAL":
+            return now.toLocaleString(); // e.g., "3/6/2025, 3:15:30 PM"
+        case "EPOCH":
+            return now.getTime(); // e.g., 1743748530000 (milliseconds since January 1, 1970)
+        default:
+            throw new Error("Invalid format. Supported formats: ISO, UTC, LOCAL, EPOCH.");
+    }
+}
 
 // Function to create or add data to localStorage
 function createItem(key, value) {
@@ -65,6 +80,15 @@ function deleteItem(key) {
 // Function to clear all items in localStorage
 function clearAll() {
     localStorage.clear();
+}
+
+
+function generateGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
+        const random = Math.random() * 16 | 0;
+        const value = char === 'x' ? random : (random & 0x3 | 0x8);
+        return value.toString(16);
+    });
 }
 
 // Example Usage:

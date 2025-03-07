@@ -2,12 +2,6 @@
     ViewData["Title"] = "Curve Compare";
 }
 
-<script src="~/js/jquery/jquery.min.js"></script>
-<script src="~/js/highcharts/highcharts.js"></script>
-<script src="~/js/highcharts/series-label.js"></script>
-<script src="~/js/highcharts/exporting.js"></script>
-<script src="~/js/highcharts/export-data.js"></script>
-<script src="~/js/highcharts/accessibility.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -18,9 +12,7 @@
     <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Files</label>
     </div>
-    <select class="custom-select" id="files" style="width:300px">
-
-    </select>
+    <select class="custom-select" id="files" style="width:300px"></select>
 </div>
 
 <figure class="highcharts-figure">
@@ -42,15 +34,32 @@
                 <small id="curvesHelp" class="form-text text-muted">Curves to be display on the chart.</small>
             </div>
             <button type="button" class="btn btn-dark" onclick="updateChart()">Update</button>
+            <button type="button" class="btn btn-dark" onclick="saveChart()">Save</button>
         </div>
         <div class="col-sm">
         </div>
     </div>
 
 </div>
-
+@section scripts {
 <script>
     var currency = 'EUR';
+    var t = {
+        "TimeLineId": generateGuid(),
+        "CreatedAt": generateTimestamp(),
+        "Username": "paulop",
+        "Title": "Curve analysis",
+        "SubTitle": "-",
+        "XAxis": "-",
+        "YAxis": "-",
+        "Category": "-",
+        "Series": "-",
+        "Tooltip": "-",
+        "Notes": "Notes can be here",
+        "ChartType": "Charttype",
+        "Settings": "Setting ",
+        "Enabled": true
+    };
 
     function getSeries(names) {
         names = 'swap.cra.zero.w220';
@@ -63,16 +72,29 @@
         })();
     }
 
+    function saveChart() {
+        t.Title = prompt("Chart Title?");
+        t.Notes =  $('#files').val();
+        $.post("/Timeline/Create", t, function(result) {
+             console.log(result);
+        });
+    }
+
     function updateChart() {
         var names = $("#curves").val().join(',');
+        
+        t.Title = "Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments";
+        t.SubTitle = "By a.s.r. ARM Team.";
         (async () => {
             const data = await fetch(
                 '/ChartCompare/GetSerie?name=' + names
             ).then(response => response.json());
-            console.log(data);
+            
+            t.Series = JSON.stringify(data);
+            t.Catalog = ['1','2','3','4','5','6','7','8','9','10'],
             Highcharts.chart('container', {
                 title: {
-                    text: 'Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments',
+                    text: t.Title,
                     align: 'left'
                 },
 
@@ -94,23 +116,7 @@
                     accessibility: {
                         rangeDescription: 'Range: 2010 to 2022'
                     },
-                            categories:
-                    [
-                        '1',
-                        '2',
-                        '3',
-                        '4',
-                        '5',
-                        '6',
-                        '7',
-                        '8',
-                        '9',
-                        '10',
-                        '9',
-                        '12',
-                        '13'
-
-                    ]
+                    categories: t.Catalog
                 },
 
                 legend: {
@@ -128,7 +134,7 @@
                     }
                 },
 
-                series: data ,
+                    series: data ,
 
                 responsive: {
                     rules: [{
@@ -148,9 +154,6 @@
         })();
 
     }
-
-    
-
 
     Highcharts.setOptions({
         colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // Custom palette
@@ -189,10 +192,8 @@
                '8', 
                '9',
                '10',
-               '9',
-               '12',
-               '13'
-
+               '11',
+               '12'
            ]
         },
 
@@ -229,9 +230,8 @@
         }
     });
 
-    $('.js-example-basic-multiple').select2();
-
     $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
         $.get("/ChartCompare/GetColumns", function(result) {
             result.sort();
             const cleanedList = result.filter(str => str !== "");
@@ -241,8 +241,6 @@
                     text : item
                 }));
             });
-            // console.log(cleanedList.join(','));
-            // console.log(cleanedList);
         });
 
         $.get("/ChartCompare/GetFiles", function(result){
@@ -256,3 +254,4 @@
     });
 
 </script>
+}
