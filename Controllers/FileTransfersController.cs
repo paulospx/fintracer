@@ -38,13 +38,35 @@ namespace FinTracer.Controllers
         }
 
 
-        public async Task<IActionResult> Copy()
+        public async Task<IActionResult> Copy(string category = "")
         {
-            var filesTransfers = _context.Filetransfers.ToList();
+            var filesTransfers = _context.Filetransfers.Where(t => t.Category == category).ToList();
             foreach(var transfer in filesTransfers)
             {
                 var updatedTransfer = await FileManager.CopyFileAsync(transfer);
                 _context.Filetransfers.Update(updatedTransfer);
+            }
+            _context.SaveChanges();
+
+            return Json("Done");
+        }
+
+
+        public IActionResult Check(string category = "")
+        {
+            var filesTransfers = _context.Filetransfers.Where(t => t.Category == category).ToList();
+            foreach (var transfer in filesTransfers)
+            {
+                if (System.IO.File.Exists(transfer.SourceFile))
+                {
+                    transfer.Status = "Integrity Check";
+                }
+                else
+                {
+                    transfer.LogMessages = $"The file {transfer.SourceFile} is non existent.";
+                    transfer.Status = "Validation";
+                }
+                _context.Filetransfers.Update(transfer);
             }
             _context.SaveChanges();
 
@@ -75,7 +97,7 @@ namespace FinTracer.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TransferId,SourceFile,SourceCreatedAt,SourceSize,SourceMd5,TargetFile,TargetCreatedAt,TargetSize,TargetMd5,LastCopied,IsSelected,Status,ScheduledToCopy")] FileTransfer fileTransfer)
+        public async Task<IActionResult> Create([Bind("TransferId,SourceFile,SourceCreatedAt,SourceSize,SourceMd5,TargetFile,TargetCreatedAt,TargetSize,TargetMd5,LastCopied,IsSelected,Status,ScheduledToCopy,Category,LogMessages")] FileTransfer fileTransfer)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +124,9 @@ namespace FinTracer.Controllers
             }
             return View(fileTransfer);
         }
+
+
+
 
         // POST: FileTransfers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

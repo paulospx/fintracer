@@ -10,15 +10,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped" id="myTable">
     <thead>
         <tr>
             <th>
                 Source
             </th>
-            </th>
             <th>
                 Target
+            </th>
+            <th>
+                MD5
             </th>
             <th>
                 Status
@@ -39,19 +41,64 @@
                 @Html.DisplayFor(modelItem => item.TargetFile)
             </td>
             <td>
+                    <pre>@Html.DisplayFor(modelItem => item.TargetMd5)</pre>
+            </td>
+            <td>
+                    <span class="badge @Html.DisplayWithoutSpacesFor(modelItem => item.Status)">
                 @Html.DisplayFor(modelItem => item.Status)
+                        
+                    </span>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ScheduledToCopy)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TransferId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TransferId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TransferId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TransferId">✏️</a> |
+                <a asp-action="Details" asp-route-id="@item.TransferId">🔍</a> |
+                <a asp-action="Delete" asp-route-id="@item.TransferId">🗑️</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<button class="btn btn-dark">Check Source</button>
-<button class="btn btn-dark">Copy Files</button>
+<button class="btn btn-dark" onclick="checkFiles()">Check Source</button>
+<button class="btn btn-dark" onclick="copyFiles()">Copy Files</button>
+<script src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+<script>
+    function copyFiles() {
+        $.get("/FileTransfers/Copy",  function(r){
+            Toastify({
+              text: r,
+              duration: 5000,
+              // destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "right", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "info",
+              onClick: function(){} // Callback after click
+            }).showToast();
+        });
+    }
+    
+    function checkFiles() {
+        $.get("/FileTransfers/Check",  function(r){
+            Toastify({
+              text: r,
+              duration: 5000,
+              // destination: "https://github.com/apvarun/toastify-js",
+              newWindow: true,
+              close: true,
+              gravity: "top", // `top` or `bottom`
+              position: "right", // `left`, `center` or `right`
+              stopOnFocus: true, // Prevents dismissing of toast on hover
+              className: "info",
+              onClick: function(){} // Callback after click
+            }).showToast();
+        });
+    }
+
+    let table = new DataTable('#myTable');
+
+</script>

@@ -21,5 +21,8 @@ namespace FinTracer.Models
         public bool IsSelected { get; set; }
         public string? Status { get; set; }
         public DateTime ScheduledToCopy { get; set; }
+
+        public string? Category { get; set; }
+        public string? LogMessages { get; set; }
     }
 }

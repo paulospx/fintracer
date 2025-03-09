@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -182,3 +182,40 @@ text.highcharts-title {
 .timeline-content.timeline-indicator > div > div > h6, div.timeline-meta > div > span {
     font-family: Memphis;
 }
+
+
+/* Workflow */
+
+.Draft {
+    background-color: #A9A9A9;
+}
+
+.Waiting {
+    background-color: #87CEFA;
+}
+
+.Validation {
+    background-color: #0066CC;
+}
+
+.Transfer-Successful {
+    background-color: #32CD32 !important;
+}
+
+.Transfer-Error {
+    background-color: #DC143C;
+}
+
+.Integrity-Check {
+    background-color: #228B22;
+}
+
+.Transfer-in-Progress {
+    background-color: #FFCC00;
+}
+
+.MD5-Check {
+    background-color: #FFA500;
+}
+
+
