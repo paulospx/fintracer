@@ -1,11 +1,11 @@
 using FinTracer;
-using NuGet.Protocol.Core.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FinTraceContext>();
+
 
 var app = builder.Build();
 

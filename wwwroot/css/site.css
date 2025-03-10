@@ -31,8 +31,11 @@ body {
     font-family: Memphis;
 }
 
+html {
+    font-family: 'Avenir' !important;
+}
 body {
-    font-family: Avenir;
+    
     color:#2a292e;
 }
 
@@ -183,9 +186,13 @@ text.highcharts-title {
     font-family: Memphis;
 }
 
+.highcharts-number {
+    text-align:right;
+}
+
+
 
 /* Workflow */
-
 .Draft {
     background-color: #A9A9A9;
 }

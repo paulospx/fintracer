@@ -57,7 +57,7 @@
         "Tooltip": "-",
         "Notes": "Notes can be here",
         "ChartType": "Charttype",
-        "Settings": "Setting ",
+        "Settings": "Setting",
         "Enabled": true
     };
 
@@ -67,22 +67,33 @@
             const data = await fetch(
                 '/ChartCompare/GetSerie?name=' + names
             ).then(response => response.json());
-            console.log(data);
-            
         })();
     }
 
-    function saveChart() {
+    function saveChart() { 
+        var file = $("#files").val();
         t.Title = prompt("Chart Title?");
-        t.Notes =  $('#files').val();
-        $.post("/Timeline/Create", t, function(result) {
-             console.log(result);
+        t.Notes =  `The data source for this chart is derived from the file ${file}. Please ensure that any updates or modifications to the dataset are reflected in this file for accuracy.`;
+        $.post("/Timeline/CreateJ", t, function(result) {
+            
+            var res = `Save the curve ${result.title}.`;
+            // Show 'data'
+            Toastify({
+                text: res,
+                duration: 5000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                className: "info",
+                onClick: function(){}
+            }).showToast();
         });
     }
 
     function updateChart() {
         var names = $("#curves").val().join(',');
-        
         t.Title = "Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments";
         t.SubTitle = "By a.s.r. ARM Team.";
         (async () => {
@@ -133,9 +144,7 @@
                         pointStart: 0
                     }
                 },
-
-                    series: data ,
-
+                series: data ,
                 responsive: {
                     rules: [{
                         condition: {
@@ -243,14 +252,14 @@
             });
         });
 
-            $.get("/ChartCompare/GetFiles", function(result){
-                $.each(result, function (i, item) {
-                    $('#files').append($('<option>', {
-                        value: item,
-                        text : item
-                    }));
-                });
+        $.get("/ChartCompare/GetFiles", function(result){
+            $.each(result, function (i, item) {
+                $('#files').append($('<option>', {
+                    value: item,
+                    text : item
+                }));
             });
+        });
     });
 
 </script>

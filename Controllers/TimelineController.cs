@@ -46,9 +46,6 @@ namespace FinTracer.Controllers
             return View();
         }
 
-        // POST: Timeline/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
@@ -62,6 +59,21 @@ namespace FinTracer.Controllers
             }
             return View(timeline);
         }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateJ([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
+        {
+            if (ModelState.IsValid)
+            {
+                timeline.TimeLineId = Guid.NewGuid();
+                _context.Add(timeline);
+                await _context.SaveChangesAsync();
+                return Json(timeline);
+            }
+            return Json(timeline);
+        }
+
 
         // GET: Timeline/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
