@@ -48,6 +48,14 @@ namespace FinTracer.Controllers
             return Json(series);
         }
 
+
+        public ActionResult GetRandomSeries()
+        {
+            var result = ExcelManager.GenerateRandomCurves();
+            return Json(result);
+        }
+
+
         public ActionResult GetCategories()
         {
             string _reportingPath = _configuration["Reporting:DataPath"] ?? string.Empty;

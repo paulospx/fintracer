@@ -4,6 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>FinTracer</Title>
+    <PackAsTool>True</PackAsTool>
+
+	<IsTestProject>True</IsTestProject>
+
   </PropertyGroup>
 
   <ItemGroup>
