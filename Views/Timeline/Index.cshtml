@@ -5,7 +5,7 @@
 <section class="bsb-timeline-7 bg-light py-3 py-md-5 py-xl-8">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-10 col-md-12 col-xl-10 col-xxl-9">
+            <div class="col-10 col-md-12 col-xl-10 col-xxl-9" style="width:100%">
                 <ul class="timeline">
                     @foreach(var t in Model)
                     {
@@ -23,7 +23,12 @@
                                         <h2 class="card-title mb-2">@t.Title</h2>
                                         @* <h6 class="card-subtitle text-secondary mb-3">@t.SubTitle</h6> *@
                                         <p class="card-text m-0"><div id="@t.TimeLineId.ToString().Replace("-",string.Empty)"></div></p>
-                                        <p class="card-text m-0" style="color:#969696">@t.Notes</p>
+                                        <p class="card-text m-0" style="color:#969696;width:100%;text-align:right">
+
+                                            <button class="btn btn-sm btn-dark" onclick="downloadFile('@t.Notes')">
+                                                📥 Download @t.Notes
+                                            </button>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -37,6 +42,16 @@
     </div>
 </section>
 <script>
+    function showPreview() {
+      alert("Showing a small preview of the data! 🔍");
+    }
+
+    function downloadFile(filename) {
+      //alert("Your download will start shortly! ✅");
+     
+      window.location.href = "/ChartCompare/DownloadFile?filename="+filename;
+    }
+
     Highcharts.setOptions({
         colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // Custom palette
     });

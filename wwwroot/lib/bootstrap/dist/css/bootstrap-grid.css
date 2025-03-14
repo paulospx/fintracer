@@ -861,7 +861,7 @@
   }
   .col-xl-10 {
     flex: 0 0 auto;
-    width: 83.33333333%;
+    width: 100%;
   }
   .col-xl-11 {
     flex: 0 0 auto;
@@ -1026,7 +1026,7 @@
   }
   .col-xxl-9 {
     flex: 0 0 auto;
-    width: 75%;
+    width: 100%;
   }
   .col-xxl-10 {
     flex: 0 0 auto;

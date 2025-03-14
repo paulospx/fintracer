@@ -3,8 +3,8 @@
 }
 
 
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link href="~/js/select2/select2.min.css" rel="stylesheet" />
+<script src="~/js/select2/select2.min.js"></script>
 
 
 <div class="container">
@@ -61,6 +61,7 @@
         "Category": "-",
         "Series": "-",
         "Tooltip": "-",
+        "Source": "-",
         "Notes": "Notes can be here",
         "ChartType": "Charttype",
         "Settings": "Setting",
@@ -79,9 +80,9 @@
     function saveChart() { 
         var file = $("#files").val();
         t.Title = prompt("Chart Title?");
-        t.Notes =  `The data source for this chart is derived from the file ${file}. Please ensure that any updates or modifications to the dataset are reflected in this file for accuracy.`;
+        t.Notes =  `${file}`;
+        t.Source = file;
         $.post("/Timeline/CreateJ", t, function(result) {
-            
             var res = `Save the curve ${result.title}.`;
             // Show 'data'
             Toastify({
@@ -100,11 +101,12 @@
 
     function updateChart() {
         var names = $("#curves").val().join(',');
+        var file = $("#files").val();
         t.Title = "Comparison of Financial Curves: Yields, Swaps, and other Key Financial Instruments";
         t.SubTitle = "By a.s.r. ARM Team.";
         (async () => {
             const data = await fetch(
-                '/ChartCompare/GetSerie?name=' + names
+                '/ChartCompare/GetSerie?name=' + names+ "&excel=" + file
             ).then(response => response.json());
             
             t.Series = JSON.stringify(data);
@@ -167,7 +169,6 @@
                 }
             });
         })();
-
     }
 
 

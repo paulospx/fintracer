@@ -48,7 +48,7 @@ namespace FinTracer.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
+        public async Task<IActionResult> Create([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Source,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace FinTracer.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateJ([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
+        public async Task<IActionResult> CreateJ([Bind("TimeLineId,CreatedAt,Username,Title,SubTitle,Category,Source,Series,XAxis,YAxis,Tooltip,Notes,ChartType,Settings,Enabled")] Timeline timeline)
         {
             if (ModelState.IsValid)
             {

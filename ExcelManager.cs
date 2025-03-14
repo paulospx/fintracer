@@ -68,6 +68,52 @@ namespace FinTracer
             };
         }
 
+
+        public static ColumnValues GetColumnByHeader2(string filePath, string columnName, string sheet = "AZ ZC YC", string currency= "EUR")
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var columnValues = new List<string>();
+            var worksheet = GetWorksheet(filePath, sheet);
+
+            int totalColumns = worksheet.Dimension.End.Column;
+            int targetColumnIndex = -1;
+            int currencyColumnIndex = -1;
+
+            for (int col = 1; col <= totalColumns; col++)
+            {
+                if (worksheet.Cells[1, col].Text.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                {
+                    targetColumnIndex = col;
+                }
+                if (worksheet.Cells[1, col].Text.Equals("Currency", StringComparison.OrdinalIgnoreCase))
+                {
+                    currencyColumnIndex = col;
+                }
+            }
+
+            if (targetColumnIndex == -1)
+                throw new ArgumentException($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
+
+            if (currencyColumnIndex == -1)
+                throw new ArgumentException($"Column 'Currency' not found in the first row of the sheet {sheet} on the file {filePath}.");
+
+            int totalRows = worksheet.Dimension.End.Row;
+            for (int row = 2; row <= totalRows; row++)
+            {
+                if (worksheet.Cells[row, currencyColumnIndex].Text.Equals(currency, StringComparison.OrdinalIgnoreCase))
+                {
+                    columnValues.Add(worksheet.Cells[row, targetColumnIndex].Text);
+                }
+            }
+
+            return new ColumnValues
+            {
+                Name = columnName,
+                Data = columnValues.ToArray()
+            };
+        }
+
+
         public static List<string> GetFilesWithExtension(string directoryPath, string fileExtension)
         {
             var fileNames = new List<string>();
@@ -85,6 +131,30 @@ namespace FinTracer
             return fileNames.Where(str => !string.IsNullOrEmpty(str)).ToList();
         }
 
+
+        public static List<ColumnValues> CalculateDeltas(List<ColumnValues> curves)
+        {
+            var deltas = new List<ColumnValues>();
+
+            for (int i = 0; i < curves.Count - 1; i++)
+            {
+                var delta = new ColumnValues
+                {
+                    Name = $"Delta {i + 1}",
+                    Data = new object[curves[i].Data.Length]
+                };
+
+                for (int j = 0; j < curves[i].Data.Length; j++)
+                {
+                    double value1 = Convert.ToDouble(curves[i].Data[j]);
+                    double value2 = Convert.ToDouble(curves[i + 1].Data[j]);
+                    delta.Data[j] = value2 - value1;
+                }
+
+                deltas.Add(delta);
+            }
+            return deltas;
+        }
 
 
         public static List<ColumnValues> GenerateRandomCurves() 

@@ -15,6 +15,7 @@ namespace FinTracer.Models
         public required string Category { get; set; }
         public required string Series { get; set; }
         public required string Settings { get; set; }
+        public required string Source { get; set; }
         public bool Enabled { get; set; }
     }
 }
