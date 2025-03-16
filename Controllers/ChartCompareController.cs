@@ -108,6 +108,12 @@ namespace FinTracer.Controllers
             return View();
         }
 
+        public ActionResult Heatmap()
+        {
+            return View();
+        }
+
+
         public ActionResult Details(int id)
         {
             return View();

@@ -9,20 +9,15 @@
 
 <div class="container">
 
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Files</label>
-    </div>
-        <select class="custom-select" id="files" style="width:300px" onclick="getCurveNames()"></select>
-</div>
 
-<figure class="highcharts-figure">
-    <div id="container"></div>
-    <div id="container1"></div>
-    <p class="highcharts-description">
-        By visualizing these curves side by side, the chart highlights trends, discrepancies, and intersections that offer valuable insights into market conditions, interest rate dynamics, and financial strategy. This tool is ideal for analysts, traders, and decision-makers looking to make data-driven decisions based on detailed financial curve analysis.
-    </p>
-</figure>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <div id="container1"></div>
+        <p class="highcharts-description">
+            By visualizing these curves side by side, the chart highlights trends, discrepancies, and intersections that offer valuable insights into market conditions, interest rate dynamics, and financial strategy. This tool is ideal for analysts, traders, and decision-makers looking to make data-driven decisions based on detailed financial curve analysis.
+        </p>
+    </figure>
 
     <div class="row">
         <div class="col-sm">
@@ -31,21 +26,32 @@
             <div class="form-group">
                 <label for="curves">Curves</label>
                 <select class="js-example-basic-multiple" id="curves" name="states[]" multiple="multiple" style="width:700px">
-
                 </select>
                 <small id="curvesHelp" class="form-text text-muted">Curves to be display on the chart.</small>
             </div>
             <div class="spinner-grow text-primary" role="status" id="spinner" style="display:none;">
                 <span class="sr-only">Loading...</span>
             </div>
-            <button type="button" class="btn btn-dark" onclick="updateChart()">Update</button>
-            <button type="button" class="btn btn-dark" onclick="saveChart()">Save</button>
+            <div>
+                <button type="button" class="btn btn-dark" onclick="updateChart()">Update</button>
+                <button type="button" class="btn btn-dark" onclick="saveChart()">Save</button>
+            </div>
+            <div style="width:100%; padding-top:20px;">
+                <div class="input-group input-group-sm mb-3">
+                    <label for="files" class="col-sm-2 col-form-label">Source File:</label>
+                    <br/>
+                    <select class="form-select form-select-sm" id="files" aria-label="Small" style="width:300px" onclick="getCurveNames()"></select>
+                </div>
+
+            </div>
         </div>
         <div class="col-sm">
         </div>
     </div>
 
 </div>
+
+
 @section scripts {
 <script>
     var currency = 'EUR';
