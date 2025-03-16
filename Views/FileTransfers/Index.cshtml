@@ -35,10 +35,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SourceFile)
+                <pre>@Html.DisplayFor(modelItem => item.SourceFile)</pre>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TargetFile)
+                <pre>@Html.DisplayFor(modelItem => item.TargetFile)</pre>
             </td>
             <td>
                     <pre>@Html.DisplayFor(modelItem => item.TargetMd5)</pre>

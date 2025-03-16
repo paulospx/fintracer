@@ -13,7 +13,7 @@
     <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Files</label>
     </div>
-    <select class="custom-select" id="files" style="width:300px"></select>
+        <select class="custom-select" id="files" style="width:300px" onclick="getCurveNames()"></select>
 </div>
 
 <figure class="highcharts-figure">
@@ -77,6 +77,23 @@
         })();
     }
 
+    function getCurveNames(){ 
+        var excel = $("#files").val();
+        $("#curves").empty();
+        $("#spinner").show();
+        $.get("/ChartCompare/GetColumns?excel="+excel, function(result) {
+            result.sort();
+            const cleanedList = result.filter(str => str !== "");
+            $.each(cleanedList, function (i, item) {
+                $('#curves').append($('<option>', {
+                    value: item,
+                    text : item
+                }));
+            });
+            $("#spinner").hide();
+        });
+    }
+
     function saveChart() { 
         var file = $("#files").val();
         t.Title = prompt("Chart Title?");
@@ -84,7 +101,6 @@
         t.Source = file;
         $.post("/Timeline/CreateJ", t, function(result) {
             var res = `Save the curve ${result.title}.`;
-            // Show 'data'
             Toastify({
                 text: res,
                 duration: 5000,
@@ -171,22 +187,10 @@
         })();
     }
 
-
-
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
-        $("#spinner").show();
-        $.get("/ChartCompare/GetColumns", function(result) {
-            result.sort();
-            const cleanedList = result.filter(str => str !== "");
-            $.each(cleanedList, function (i, item) {
-                $('#curves').append($('<option>', {
-                    value: item,
-                    text : item
-                }));
-            });
-            $("#spinner").hide();
-        });
+        
+        
 
         $.get("/ChartCompare/GetFiles", function(result){
             $.each(result, function (i, item) {
@@ -195,6 +199,8 @@
                     text : item
                 }));
             });
+
+            getCurveNames();
         });
 
         $.get("/ChartCompare/GetRandomSeries", function(result){

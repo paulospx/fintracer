@@ -69,7 +69,7 @@ namespace FinTracer
         }
 
 
-        public static ColumnValues GetColumnByHeader2(string filePath, string columnName, string sheet = "AZ ZC YC", string currency= "EUR")
+        public static ColumnValues GetColumnByHeader2(string filePath, string columnName, string sheet = "AZ ZC YC", string currency = "EUR")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var columnValues = new List<string>();
@@ -157,7 +157,7 @@ namespace FinTracer
         }
 
 
-        public static List<ColumnValues> GenerateRandomCurves() 
+        public static List<ColumnValues> GenerateRandomCurves()
         {
             var random = new Random();
             var curves = new List<ColumnValues>();
@@ -278,6 +278,20 @@ namespace FinTracer
             }
 
             return fileNames;
+        }
+
+
+        public static void UpdateFormula(string filePath, string cell = "A1", string formula = "SUM(B1:B10)")
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
+            {
+                var worksheet = package.Workbook.Worksheets[0];
+                worksheet.Cells[cell].Formula = "SUM(B1:B10)";
+                worksheet.Calculate();
+                package.Save();
+            }
+            Console.WriteLine("Formula updated successfully!");
         }
     }
 }

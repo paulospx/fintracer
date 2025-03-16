@@ -4,9 +4,7 @@ namespace FinTracer.Controllers
 {
     public class ChartCompareController : Controller
     {
-        private readonly IConfiguration _configuration;
-        
-
+        private readonly IConfiguration _configuration;      
         public ChartCompareController(IConfiguration configuration)
         {
             _configuration = configuration;

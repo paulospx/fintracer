@@ -23,6 +23,9 @@
     </p>
 </figure>
 <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+
+
+
 <script>
 Highcharts.setOptions({
     colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // a.s.r. Palette
@@ -142,75 +145,13 @@ getData().then(data => {
     });
 
 
-            Highcharts.chart('container2', {
-            chart: {
-                type: 'scatter',
-                zooming: {
-                    type: 'xy'
-                }
-            },
-            title: {
-                text: 'Olympics athletes by height and weight'
-            },
-            subtitle: {
-                text: 'Source file Here'
-            },
-            xAxis: {
-                title: {
-                    text: 'Height'
-                },
-                labels: {
-                    format: '{value} m'
-                },
-                startOnTick: true,
-                endOnTick: true,
-                showLastLabel: true
-            },
-            yAxis: {
-                title: {
-                    text: 'Weight'
-                },
-                labels: {
-                    format: '{value} kg'
-                }
-            },
-            legend: {
-                enabled: true
-            },
-            plotOptions: {
-                scatter: {
-                    marker: {
-                        radius: 2.5,
-                        symbol: 'circle',
-                        states: {
-                            hover: {
-                                enabled: true,
-                                lineColor: 'rgb(100,100,100)'
-                            }
-                        }
-                    },
-                    states: {
-                        hover: {
-                            marker: {
-                                enabled: false
-                            }
-                        }
-                    },
-                    jitter: {
-                        x: 0.005
-                    }
-                }
-            },
-            tooltip: {
-                pointFormat: 'Height: {point.x} m <br /> Weight: {point.y} kg'
-            },
-            series
-        });
+   
+
 
 
 
     // Create the chart
-        Highcharts.chart('container3', {
+    Highcharts.chart('container3', {
 
         chart: {
             type: 'heatmap',
@@ -251,7 +192,7 @@ getData().then(data => {
         colorAxis: {
             min: 0,
             minColor: '#FFFFFF',
-            maxColor: Highcharts.getOptions().colors[0]
+                maxColor: '#4ACB82'
         },
 
         legend: {
