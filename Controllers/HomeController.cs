@@ -13,6 +13,23 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    public IActionResult Scan(string path)
+    {
+        SearchManager.IndexFile(path);
+        return Json("Done");
+    }
+
+    public IActionResult File()
+    {
+        return View();
+    }
+
+    public IActionResult Query(string q)
+    {
+        var result = SearchManager.ConstructQuery(q);
+        return Json(result);
+    }
+
     public IActionResult Index()
     {
         return View();

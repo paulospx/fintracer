@@ -1,0 +1,28 @@
+﻿<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="search-container">
+        <input type="text" class="form-control search-input" placeholder="Search..." onchange="search(this.value)">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <pre id="result" style="width:100%;height:300px;">
+    
+    </pre>
+
+  </div>
+</div>
+<script>
+    function search(text) {
+        $("#result").html('...');
+        $.get("/home/Query?q="+text, function(result) {
+            console.log(result);
+            $("#result").html(JSON.stringify(result,null,4));
+        });
+    }
+
+
+
+</script>
