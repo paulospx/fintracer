@@ -11,9 +11,32 @@
     <pre id="result" style="width:100%;height:300px;">
     
     </pre>
-
+        <div class="accordion" id="settingsAccordion">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Settings
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#settingsAccordion">
+                    <div class="accordion-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="inputText" class="form-label">Path</label>
+                                <input type="text" class="form-control" id="inputText" placeholder="Type something...">
+                            </div>
+                            <button type="button" class="btn btn-primary" id="scanBtn" onclick="scan()">Scan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
   </div>
 </div>
+
+
+
 <script>
     function search(text) {
         $("#result").html('...');
@@ -23,6 +46,13 @@
         });
     }
 
-
+    function scan() {
+        $("#result").html('...');
+        var file = $("#inputText").val();
+        $.get("/home/Scan?path="+file, function(result) {
+            
+            $("#result").html(JSON.stringify(result,null,4));
+        });
+    }
 
 </script>
