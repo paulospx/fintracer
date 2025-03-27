@@ -15,7 +15,6 @@ namespace FinTracer
             }
         }
 
-
         public static async Task<FileTransfer> CopyFileAsync(FileTransfer filetransfer)
         {
             try
@@ -49,6 +48,7 @@ namespace FinTracer
                 {
                     filetransfer.Status = "Transfer Successful";
                 }
+
                 // Update last copied time
                 filetransfer.LastCopied = DateTime.Now;
 
@@ -65,6 +65,58 @@ namespace FinTracer
                 filetransfer.Status = $"Transfer Error";
                 return filetransfer;
             }
+        }
+
+        public static void HandleFileCopy(FileCopyTask task)
+        {
+            try
+            {
+                if (File.Exists(task.SourceFile))
+                {
+                    File.Copy(task.SourceFile, task.TargetFile, true);
+                    task.CopiedAt = DateTime.Now;
+                    task.Warning = null; // Clear warning on success
+                    Console.WriteLine($"File copied successfully from {task.SourceFile} to {task.TargetFile} at {task.CopiedAt}");
+                }
+                else
+                {
+                    string message = $"File not found: {task.SourceFile}. We will retry every hour until the end of the day. \n" +
+                                     $"Stakeholders: {task.Stakeholders}, please ensure the file is available.";
+                    task.Warning = message;
+                    Console.WriteLine(message);
+
+                    // Retry logic: Retry every hour
+                    DateTime retryEnd = DateTime.Today.AddDays(1).AddTicks(-1); // End of the day
+                    for (DateTime retryTime = DateTime.Now.AddHours(1); retryTime <= retryEnd; retryTime = retryTime.AddHours(1))
+                    {
+                        Thread.Sleep(3600000); // Wait for an hour
+                        if (File.Exists(task.SourceFile))
+                        {
+                            File.Copy(task.SourceFile, task.TargetFile, true);
+                            task.CopiedAt = DateTime.Now;
+                            task.Warning = null; // Clear warning on success
+                            Console.WriteLine($"File copied successfully from {task.SourceFile} to {task.TargetFile} at {task.CopiedAt}");
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error copying file: {ex.Message}");
+            }
+        }
+
+        public static DateTime GetNextScheduledTime(FileCopyTask task)
+        {
+            return task.Period switch
+            {
+                "Daily" => task.ScheduledAt.AddDays(1),
+                "Weekly" => task.ScheduledAt.AddDays(7),
+                "Monthly" => task.ScheduledAt.AddMonths(1),
+                "Quarterly" => task.ScheduledAt.AddMonths(3),
+                _ => task.ScheduledAt
+            };
         }
     }
 }
