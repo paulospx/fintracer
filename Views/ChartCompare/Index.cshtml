@@ -9,8 +9,6 @@
 
 <div class="container">
 
-
-
     <figure class="highcharts-figure">
         <div id="container"></div>
         <div id="container1"></div>
@@ -85,6 +83,7 @@
 
     function getCurveNames(){ 
         var excel = $("#files").val();
+        createItem("ftCurrentFile", excel);
         $("#curves").empty();
         $("#spinner").show();
         $.get("/ChartCompare/GetColumns?excel="+excel, function(result) {
@@ -196,7 +195,7 @@
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
         
-        
+        var currentFile = readItem("ftCurrentFile");
 
         $.get("/ChartCompare/GetFiles", function(result){
             $.each(result, function (i, item) {
@@ -205,6 +204,8 @@
                     text : item
                 }));
             });
+
+            $("#files").val(currentFile);
 
             getCurveNames();
         });

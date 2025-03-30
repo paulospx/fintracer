@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿@{
+    ViewData["Title"] = "Files";
+}
+
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="search-container">
@@ -8,11 +12,9 @@
     </div>
   </div>
   <div class="row">
-    <pre id="result" style="width:100%;height:300px;">
-    
-    </pre>
+    <div id="result" style="width:100%;height:500px;overflow-y:scroll;margin-bottom:20px">
+    </div>
         <div class="accordion" id="settingsAccordion">
-            <!-- Accordion Item 1 -->
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -36,13 +38,19 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
 
 <script>
     function search(text) {
         $("#result").html('...');
         $.get("/home/Query?q="+text, function(result) {
-            console.log(result);
-            $("#result").html(JSON.stringify(result,null,4));
+            var html = "";
+            result.forEach(function(file) {
+                html += `**${file.filename}.${file.extension}**\n`
+                html += '```bash\n'+`${file.fullPath}`+ '\n```\n';
+            });
+            $("#result").html(marked.parse(html));
         });
     }
 
