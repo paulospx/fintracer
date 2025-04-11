@@ -97,3 +97,44 @@ function generateGuid() {
 // updateItem('user', { name: 'John Doe', age: 31 });
 // deleteItem('user');
 // clearAll();
+
+function bucketizePoints(basePoints, n) {
+    if (n <= 0 || basePoints.length === 0) {
+        throw new Error("Invalid input values");
+    }
+
+    basePoints.sort((a, b) => a - b); // Ensure base points are sorted
+    const min = basePoints[0];
+    const max = basePoints[basePoints.length - 1];
+    const step = (max - min) / n;
+    const buckets = [];
+
+    for (let i = 0; i < n; i++) {
+        const from = min + i * step;
+        const to = min + (i + 1) * step;
+        buckets.push({
+            from, to, points: [], color: 'rgba(68, 170, 213, 0.1)',
+            label: {
+                text: 'X',
+                style: {
+                    color: '#DDDDDD'
+                }
+            }
+        });
+    }
+
+    // Assign points to buckets
+    basePoints.forEach(point => {
+        for (let bucket of buckets) {
+            if (point >= bucket.from && point < bucket.to) {
+                bucket.points.push(point);
+                break;
+            }
+        }
+    });
+
+    return buckets;
+}
+
+// Example usage:
+console.log(bucketizePoints([1, 5, 10, 15, 20, 25, 30], 3));

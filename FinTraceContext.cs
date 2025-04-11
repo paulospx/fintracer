@@ -6,8 +6,8 @@ namespace FinTracer
     public class FinTraceContext: DbContext
     {
         public DbSet<Timeline> Timelines { get; set; } = null!;
-
         public DbSet<FileTransfer> Filetransfers { get; set; } = null;
+        public DbSet<ComparisonModel> Comparisons { get; set; } = null;
         public string DbPath { get; }
         public FinTraceContext()
         {

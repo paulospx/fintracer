@@ -7,7 +7,6 @@ using Lucene.Net.Util;
 using System.Text.RegularExpressions;
 using Lucene.Net.QueryParsers.Classic;
 
-
 namespace FinTracer
 {
     public class PathInfo

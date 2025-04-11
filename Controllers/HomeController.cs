@@ -24,6 +24,24 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Compare()
+    {
+        return View();
+    }
+
+    public IActionResult Category()
+    {
+        return View();
+    }
+
+    public  IActionResult CompareCurves()
+    {
+        var file1 = "C:\\Repos\\Data\\Curves\\Book_2.xlsx";
+        var file2 = "C:\\Repos\\Data\\Curves\\Book_3.xlsx";
+        var result = ExcelManager.CompareFiles(file1, file2);
+        return Json(result);
+    }
+
     public IActionResult Query(string q)
     {
         var result = SearchManager.ConstructQuery(q);

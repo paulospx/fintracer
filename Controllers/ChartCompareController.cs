@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OxyPlot;
+using OxyPlot.Series;
+using OxyPlot.WindowsForms;
 
 namespace FinTracer.Controllers
 {
@@ -10,6 +13,7 @@ namespace FinTracer.Controllers
             _configuration = configuration;
         }
 
+        [ResponseCache(Duration = 300)]
         public ActionResult GetFiles()
         {
             string _reportingPath = _configuration["Reporting:DataPath"] ?? string.Empty;
@@ -17,10 +21,36 @@ namespace FinTracer.Controllers
             return Json(files);
         }
 
+        public IActionResult Generate()
+        {
+            var plotModel = new PlotModel { Title = "Curve Chart" };
+
+            var lineSeries = new LineSeries
+            {
+                Title = "Sales"
+            };
+            lineSeries.Points.Add(new DataPoint(1, 30));
+            lineSeries.Points.Add(new DataPoint(2, 45));
+            lineSeries.Points.Add(new DataPoint(3, 60));
+            lineSeries.Points.Add(new DataPoint(4, 50));
+            lineSeries.Points.Add(new DataPoint(5, 70));
+            lineSeries.Points.Add(new DataPoint(6, 90));
+            lineSeries.Points.Add(new DataPoint(7, 100));
+
+            // Add series to plot model
+            plotModel.Series.Add(lineSeries);
+
+            // Render and save the chart
+            var pngExporter = new PngExporter { Width = 800, Height = 400 };
+            pngExporter.ExportToFile(plotModel, "C:\\temp\\curve_chart.png");
+            return Json("Done");
+        }
+
 
         [HttpGet]
         public IActionResult DownloadFile(string filename)
         {
+
             string _reportingPath = _configuration["Reporting:DataPath"] ?? string.Empty;
             string filePath = $"{_reportingPath}\\{filename}";
 
@@ -54,6 +84,7 @@ namespace FinTracer.Controllers
             }
         }
 
+        [ResponseCache(Duration = 3600)]
         public ActionResult GetColumns(string excel= "Book_3.xlsx")
         {
             //int _limitRowsFrom = 2;
@@ -109,6 +140,11 @@ namespace FinTracer.Controllers
         }
 
         public ActionResult Heatmap()
+        {
+            return View();
+        }
+
+        public ActionResult Bands()
         {
             return View();
         }
