@@ -1,9 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Timelines";
+    ViewData["Title"] = "Timeline";
 }
 
 @using Humanizer
 @model IEnumerable<Timeline>
+
+<style>
+    body {
+        background-color:#f8f9fa;
+    }
+</style>
 
 <section class="bsb-timeline-7 bg-light py-3 py-md-5 py-xl-8">
     <div class="container">
@@ -38,7 +44,6 @@
                     </li>
                     }
                 </ul>
-
             </div>
         </div>
     </div>
@@ -49,7 +54,6 @@
     }
 
     function downloadFile(filename) {
-        //alert("Your download will start shortly! ✅");
         window.location.href = "/ChartCompare/DownloadFile?filename="+filename;
     }
 

@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using Serilog;
 
 namespace FinTracer
 {
@@ -12,28 +13,28 @@ namespace FinTracer
             var package = new ExcelPackage(new FileInfo(filePath));
             var worksheet = package.Workbook.Worksheets[sheet];
             if (worksheet == null)
+            {
+                Log.Error($"The sheet '{sheet}' does not exist in the Excel file {filePath}.");
                 throw new ArgumentException($"The sheet '{sheet}' does not exist in the Excel file {filePath}.");
-
+            }
             return worksheet;
         }
 
-        public static List<string> ReadFirstRow(string filePath, string sheet = "AZ ZC YC")
+        public static List<string> ReadFirstRow(string filePath, string sheet = "AC ZC YC")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var firstRowValues = new List<string>();
             var worksheet = GetWorksheet(filePath, sheet);
-
             int totalColumns = worksheet.Dimension.End.Column;
             for (int col = 1; col <= totalColumns; col++)
             {
                 var value = worksheet.Cells[1, col].Text;
                 firstRowValues.Add(value);
             }
-
             return firstRowValues;
         }
 
-        public static ColumnValues GetColumnByHeader(string filePath, string columnName, string sheet = "AZ ZC YC")
+        public static ColumnValues GetColumnByHeader(string filePath, string columnName, string sheet = "AC ZC YC")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var columnValues = new List<string>();
@@ -52,7 +53,10 @@ namespace FinTracer
             }
 
             if (targetColumnIndex == -1)
+            {
+                Log.Error($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
                 throw new ArgumentException($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
+            }
 
             int totalRows = worksheet.Dimension.End.Row;
             for (int row = 2; row <= totalRows; row++)
@@ -68,7 +72,7 @@ namespace FinTracer
         }
 
 
-        public static ColumnValues GetColumnByHeader2(string filePath, string columnName, string sheet = "AZ ZC YC", string currency = "EUR")
+        public static ColumnValues GetColumnByHeader2(string filePath, string columnName, string sheet = "AC ZC YC", string currency = "EUR")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var columnValues = new List<string>();
@@ -91,10 +95,16 @@ namespace FinTracer
             }
 
             if (targetColumnIndex == -1)
+            {
+                Log.Error($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
                 throw new ArgumentException($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
-
+            }
+                
             if (currencyColumnIndex == -1)
+            {
+                Log.Error($"Column 'Currency' not found in the first row of the sheet {sheet} on the file {filePath}.");
                 throw new ArgumentException($"Column 'Currency' not found in the first row of the sheet {sheet} on the file {filePath}.");
+            }
 
             int totalRows = worksheet.Dimension.End.Row;
             for (int row = 2; row <= totalRows; row++)
@@ -113,13 +123,16 @@ namespace FinTracer
         }
 
 
+
         public static List<string> GetFilesWithExtension(string directoryPath, string fileExtension)
         {
             var fileNames = new List<string>();
 
             if (!Directory.Exists(directoryPath))
-                throw new DirectoryNotFoundException($"The directory at {directoryPath} does not exist.");
-
+            {
+                Log.Warning($"The directory at {directoryPath} does not exist.");
+            }
+               
             var files = Directory.GetFiles(directoryPath, $"*.{fileExtension}", SearchOption.TopDirectoryOnly);
 
             foreach (var file in files)
@@ -183,14 +196,16 @@ namespace FinTracer
 
 
 
-        public static List<ColumnValues> GetColumnsByHeaders(string filePath, string columnNames, string sheet = "AZ ZC YC")
+        public static List<ColumnValues> GetColumnsByHeaders(string filePath, string columnNames, string sheet = "AC ZC YC")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
             var resultData = new List<ColumnValues>();
 
             if (!File.Exists(filePath))
-                throw new FileNotFoundException($"The file at {filePath} does not exist.");
+            {
+                Log.Warning($"The file at {filePath} does not exist.");
+            }
 
             using (var package = new ExcelPackage(new FileInfo(filePath)))
             {
@@ -289,7 +304,7 @@ namespace FinTracer
         }
 
 
-        public static List<ColumnValues> CompareFiles(string excelFile1, string excelFile2, string sheetName = "AZ ZC YC")
+        public static List<ColumnValues> CompareFiles(string excelFile1, string excelFile2, string sheetName = "AC ZC YC")
         {
             var result = new List<ColumnValues>();
             if (!File.Exists(excelFile1) || !File.Exists(excelFile2))
@@ -302,9 +317,7 @@ namespace FinTracer
 
             var similarities = curvesNames1.Intersect(curvesNames2).ToList();
             
-            // var differences = curvesNames1.Except(curvesNames2).Union(curvesNames2.Except(curvesNames1)).ToList();
-            
-            similarities.Remove("");
+            similarities.Remove(string.Empty);
             similarities.Remove("Currency");
             
             foreach (var similarity in similarities)
@@ -337,7 +350,7 @@ namespace FinTracer
             {
                 if (!Directory.Exists(path))
                 {
-                    Console.WriteLine("The specified path does not exist.");
+                    Log.Warning($"The specified path does not exist: {path}");
                     return fileNames;
                 }
 
@@ -345,9 +358,8 @@ namespace FinTracer
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                Log.Error($"An error occurred while getting file names: {ex.Message}");
             }
-
             return fileNames;
         }
 
@@ -362,7 +374,7 @@ namespace FinTracer
                 worksheet.Calculate();
                 package.Save();
             }
-            Console.WriteLine("Formula updated successfully!");
+            Log.Information("Formula updated successfully!");
         }
 
         public static double CalculateRMSE(double[] f, double[] g)
@@ -388,7 +400,6 @@ namespace FinTracer
             {
                 sumAbsoluteDifferences += Math.Abs(f[i] - g[i]);
             }
-
             return sumAbsoluteDifferences / n;
         }
 

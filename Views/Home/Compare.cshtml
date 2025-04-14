@@ -3,15 +3,199 @@
 }
 
 <div class="text-center">
-    <h1>Curves Compare</h1>
+    <h1>Compare</h1>
     <p>Compares curves of 2 Super Set excel files.</p>
 
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <h2>This is compare</h2>
+        <h2>Container 1</h2>
+        <div id="container1"></div>
     </div>
     <div class="col-sm-6">
-        <h2>This is compare</h2>
+        <h2>Container 2</h2>
+        <div id="container2"></div>
     </div>
 </div>
+<script>
+    Highcharts.setOptions({
+        colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // a.s.r. Palette
+    });
+
+    const series = [{
+        name: 'Basketball',
+        id: 'basketball',
+        marker: {
+            symbol: 'circle'
+        }
+    },
+    {
+        name: 'Triathlon',
+        id: 'triathlon',
+        marker: {
+            symbol: 'triangle'
+        }
+    },
+    {
+        name: 'Volleyball',
+        id: 'volleyball',
+        marker: {
+            symbol: 'square'
+        }
+    }];
+
+
+async function getData() {
+    const response = await fetch(
+        '/data/olympic2012.json'
+    );
+    return response.json();
+}
+
+getData().then(data => {
+    const getData = sportName => {
+        const temp = [];
+        data.forEach(elm => {
+            if (elm.sport === sportName && elm.weight > 0 && elm.height > 0) {
+                temp.push([elm.height, elm.weight]);
+            }
+        });
+        return temp;
+    };
+    series.forEach(s => {
+        s.data = getData(s.id);
+    });
+
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'scatter',
+            zooming: {
+                type: 'xy'
+            }
+        },
+        title: {
+            text: 'Olympics athletes by height and weight'
+        },
+        subtitle: {
+            text: 'Source file Here'
+        },
+        xAxis: {
+            title: {
+                text: 'Height'
+            },
+            labels: {
+                format: '{value} m'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Weight'
+            },
+            labels: {
+                format: '{value} kg'
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 2.5,
+                    symbol: 'circle',
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                jitter: {
+                    x: 0.005
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: 'Height: {point.x} m <br /> Weight: {point.y} kg'
+        },
+        series
+    });
+
+    Highcharts.chart('container2', {
+        chart: {
+            type: 'scatter',
+            zooming: {
+                type: 'xy'
+            }
+        },
+        title: {
+            text: 'Olympics athletes by height and weight'
+        },
+        subtitle: {
+            text: 'Source file Here'
+        },
+        xAxis: {
+            title: {
+                text: 'Height'
+            },
+            labels: {
+                format: '{value} m'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Weight'
+            },
+            labels: {
+                format: '{value} kg'
+            }
+        },
+        legend: {
+            enabled: true
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 2.5,
+                    symbol: 'circle',
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                jitter: {
+                    x: 0.005
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: 'Height: {point.x} m <br /> Weight: {point.y} kg'
+        },
+        series
+    });
+});
+
+</script>

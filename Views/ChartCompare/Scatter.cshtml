@@ -56,12 +56,13 @@ const series = [{
 
 async function getData() {
     const response = await fetch(
-        'https://www.highcharts.com/samples/data/olympic2012.json'
+        '/data/olympic2012.json'
     );
     return response.json();
 }
-        Highcharts.Templating.helpers.substr = (s, from, length) =>
-            s.substr(from, length);
+
+Highcharts.Templating.helpers.substr = (s, from, length) =>
+    s.substr(from, length);
 
 
 getData().then(data => {
