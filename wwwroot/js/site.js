@@ -137,4 +137,4 @@ function bucketizePoints(basePoints, n) {
 }
 
 // Example usage:
-console.log(bucketizePoints([1, 5, 10, 15, 20, 25, 30], 3));
+// console.log(bucketizePoints([1, 5, 10, 15, 20, 25, 30], 3));

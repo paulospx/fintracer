@@ -21,7 +21,10 @@ namespace FinTracer.Controllers
 
         public async Task<IActionResult> List(string period)
         {
-            var result = await _context.Comparisons.Where(p => p.Period == period).OrderByDescending(p => p.DeltaSum).ToListAsync();
+            var result = await _context.Comparisons
+                .Where(p => p.Period == period)
+                .OrderByDescending(p => p.DeltaSum)
+                .ToListAsync();
             return Json(result);
         }
 

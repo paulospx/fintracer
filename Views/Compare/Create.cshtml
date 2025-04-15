@@ -5,84 +5,99 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<h1>Compares Curves</h1>
 
-<h4>CompareModel</h4>
+<h4>Compares curves between 2 Excel Files</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Comments" class="control-label"></label>
-                <input asp-for="Comments" class="form-control" />
-                <span asp-validation-for="Comments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Period" class="control-label"></label>
-                <input asp-for="Period" class="form-control" />
-                <span asp-validation-for="Period" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SourceFile" class="control-label"></label>
-                <input asp-for="SourceFile" class="form-control" />
-                <span asp-validation-for="SourceFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TargetFile" class="control-label"></label>
-                <input asp-for="TargetFile" class="form-control" />
-                <span asp-validation-for="TargetFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SourceCurve" class="control-label"></label>
-                <input asp-for="SourceCurve" class="form-control" />
-                <span asp-validation-for="SourceCurve" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TargetCurve" class="control-label"></label>
-                <input asp-for="TargetCurve" class="form-control" />
-                <span asp-validation-for="TargetCurve" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Maturities" class="control-label"></label>
-                <input asp-for="Maturities" class="form-control" />
-                <span asp-validation-for="Maturities" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Delta" class="control-label"></label>
-                <input asp-for="Delta" class="form-control" />
-                <span asp-validation-for="Delta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        <!-- File Paths -->
+        <div class="mb-3">
+            <label for="filePath1" class="form-label">Source File Path</label>
+            <input type="text" class="form-control" id="filePath1" placeholder="Enter the path for the Source File" required>
+        </div>
+        <div class="mb-3">
+            <label for="filePath2" class="form-label">Target File Path</label>
+            <input type="text" class="form-control" id="filePath2" placeholder="Enter the path for the Target File" required>
+        </div>
+
+        <!-- Sheet Names -->
+        <div class="mb-3">
+            <label for="sheetName" class="form-label">Sheet Name</label>
+            <input type="text" class="form-control" id="sheetName" placeholder="AC ZC YC" required value="AC ZC YC">
+        </div>
+
+        <!-- Period Selection -->
+        <div class="mb-3">
+            <label for="period" class="form-label">Select Period</label>
+            <select class="form-select" id="period" required>
+                <option value="" disabled selected>Select a period</option>
+                <option value="2025M01">2025M01</option>
+                <option value="2025M02">2025M02</option>
+                <option value="2025M03">2025M03</option>
+                <option value="2025M04">2025M04</option>
+                <option value="2025M05">2025M05</option>
+                <option value="2025M06">2025M06</option>
+                <option value="2025M07">2025M07</option>
+                <option value="2025M08">2025M08</option>
+                <option value="2025M09">2025M09</option>
+                <option value="2025M10">2025M10</option>
+                <option value="2025M11">2025M11</option>
+                <option value="2025M12">2025M12</option>
+                <option value="2026M01">2026M01</option>
+                <option value="2026M02">2026M02</option>
+                <option value="2026M03">2026M03</option>
+                <option value="2026M04">2026M04</option>
+            </select>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" placeholder="Enter the category for comparison">
+        </div>
+
+        <!-- Currency -->
+        <div class="mb-3">
+            <label for="currency" class="form-label">Currency</label>
+            <input type="text" class="form-control" id="currency" placeholder="Enter the currency for comparison" value="EUR">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="button" onclick="submitCompare()" class="btn btn-primary">Compare</button>
+        </div>
+        <div class="spinner-border text-primary" role="status" id="statusCompare" style="display:none;">
+            <span class="sr-only">Comparing...</span>
+        </div>
     </div>
 </div>
+<script>
+    function generateTimestamp() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        return `${year}M${month}D${day}H${hours}m${minutes}s${seconds}`;
+    }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    function submitCompare() {
+        var period = $("#period").val()??generateTimestamp();
+        var filename1 = $("#filePath1").val()??"C:\\Repos\\Data\\Curves\\Book_2.xlsx";
+        var filename2 = $("#filePath1").val()??"C:\\Repos\\Data\\Curves\\Book_3.xlsx";
+        var sheetname = $("#sheetName").val();
+        $("#statusCompare").show();
+        $.post("/Home/CompareCurves", { period : period, filename1:filename1, filename2: filename2, sheetname:sheetname}, function (data) {
+            // Handle the response data here
+            console.log(data);
+            $("#statusCompare").hide();
+        });
+    }
+</script>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

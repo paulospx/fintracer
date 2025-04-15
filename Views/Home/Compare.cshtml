@@ -85,8 +85,8 @@
     });
 
     const series = [{
-        name: 'Basketball',
-        id: 'basketball',
+        name: 'Athletics',
+        id: 'athletics',
         marker: {
             symbol: 'circle'
         }
@@ -370,11 +370,13 @@ getData().then(data => {
 
     function clearCurveTypes(){
         alert("TODO");
-
     }
 
+
+
+
     $(document).ready(function () {
-        $.get("/Compare/List?period=202503",function(result) {
+        $.get("/Compare/List?period=2025M03",function(result) {
             createChartDivs(result.length);
             var i = 1;
             result.forEach(function(comparison){
@@ -383,18 +385,16 @@ getData().then(data => {
                     { name : chartTitle(comparison.title), data : JSON.parse(comparison.targetCurve)}
                 ];
 
-                createChart(`comparison${i}`,comparison.title, series);
+                createChart(`comparison${i}`,"Curves " + comparison.title, series);
 
                 var deltaSeries = [
                         { name : chartTitle(comparison.title), data : JSON.parse(comparison.delta)}
                 ]
 
-                createChart(`comparison.delta${i}`,comparison.title, deltaSeries);
+                createChart(`comparison.delta${i}`,"Delta " + comparison.title, deltaSeries);
 
                 i=i+1;
             });
         });
     });
-
-
 </script>
