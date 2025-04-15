@@ -1,4 +1,6 @@
-﻿using OfficeOpenXml;
+﻿using FinTracer.Models;
+using Newtonsoft.Json;
+using OfficeOpenXml;
 using Serilog;
 
 namespace FinTracer
@@ -144,28 +146,40 @@ namespace FinTracer
         }
 
 
-        public static List<ColumnValues> CalculateDeltas(List<ColumnValues> curves)
+        public static List<CompareModel> CalculateDeltas(string title, string sourceFile, string targetFile, ColumnValues source, ColumnValues target, IEnumerable<string> maturities, string period)
         {
-            var deltas = new List<ColumnValues>();
-
-            for (int i = 0; i < curves.Count - 1; i++)
+            var result = new List<CompareModel>();
+            
+            var delta = new ColumnValues
             {
-                var delta = new ColumnValues
-                {
-                    Name = $"Delta {i + 1}",
-                    Data = new object[curves[i].Data.Length]
-                };
+                Name = $"Delta {source.Name} {target.Name}",
+                Data = new object[source.Data.Length]
+            };
 
-                for (int j = 0; j < curves[i].Data.Length; j++)
-                {
-                    double value1 = Convert.ToDouble(curves[i].Data[j]);
-                    double value2 = Convert.ToDouble(curves[i + 1].Data[j]);
-                    delta.Data[j] = value2 - value1;
-                }
-
-                deltas.Add(delta);
+            for (int j = 0; j < source.Data.Length; j++)
+            {
+                double value1 = Convert.ToDouble(source.Data[j]);
+                double value2 = Convert.ToDouble(target.Data[j]);
+                delta.Data[j] = value2 - value1;
             }
-            return deltas;
+
+            result.Add(new CompareModel
+            {
+                Title = $"Delta {source.Name} {target.Name}",
+                SourceFile = sourceFile,
+                TargetFile = targetFile,
+                SourceCurve = JsonConvert.SerializeObject(source.Data),
+                TargetCurve = JsonConvert.SerializeObject(target.Data),
+                Delta = JsonConvert.SerializeObject(delta.Data),
+                CreatedBy = "Username",
+                CreatedAt = DateTime.Now,
+                Comments = "",
+                Description = "",
+                Maturities = string.Join(",",maturities.ToList()),
+                Period = period
+            });
+
+            return result;
         }
 
 
