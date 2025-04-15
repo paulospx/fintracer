@@ -1,0 +1,102 @@
+﻿@model IEnumerable<FinTracer.Models.CompareModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SourceFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetFile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SourceCurve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TargetCurve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Maturities)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Delta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Period)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SourceFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetFile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SourceCurve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TargetCurve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maturities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

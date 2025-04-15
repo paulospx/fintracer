@@ -36,22 +36,18 @@ public class HomeController : Controller
         return View();
     }
 
-    public  IActionResult CompareCurves(string period="202503")
+    public  IActionResult CompareCurves(string period="202503", string filename1= "C:\\Repos\\Data\\Curves\\Book_2.xlsx", string filename2= "C:\\Repos\\Data\\Curves\\Book_3.xlsx", string sheetname= "AC ZC YC")
     {
-        var file1 = "C:\\Repos\\Data\\Curves\\Book_2.xlsx";
-        var file2 = "C:\\Repos\\Data\\Curves\\Book_3.xlsx";
-        var sheetName = "AC ZC YC";
-        
-        var curvesNames1 = ExcelManager.ReadFirstRow(file1, sheetName);
-        var curvesNames2 = ExcelManager.ReadFirstRow(file1, sheetName);
+        var curvesNames1 = ExcelManager.ReadFirstRow(filename1, sheetname);
+        var curvesNames2 = ExcelManager.ReadFirstRow(filename2, sheetname);
 
         var maturities = curvesNames1.Intersect(curvesNames2).ToList();
 
         maturities.Remove(string.Empty);
         maturities.Remove("Currency");
 
-        var curves1 = ExcelManager.GetColumnsByHeaders(file1, string.Join(",", maturities), sheetName);
-        var curves2 = ExcelManager.GetColumnsByHeaders(file1, string.Join(",", maturities), sheetName);
+        var curves1 = ExcelManager.GetColumnsByHeaders(filename1, string.Join(",", maturities), sheetname);
+        var curves2 = ExcelManager.GetColumnsByHeaders(filename2, string.Join(",", maturities), sheetname);
 
         var result = new List<CompareModel>();
         foreach (var curve1 in curves1)
@@ -60,16 +56,14 @@ public class HomeController : Controller
             {
                 if (curve1.Name == curve2.Name)
                 {
-                    var deltas = ExcelManager.CalculateDeltas($"Delta-{curve1.Name}-{curve2.Name}",file1, file2, curve1, curve2,maturities, period);
+                    var deltas = ExcelManager.CalculateDeltas($"Delta-{curve1.Name}-{curve2.Name}",filename1, filename2, curve1, curve2,maturities, period);
                     result.AddRange(deltas);
                 }
             }
-
         }
 
         _context.Comparisons.AddRange(result);
         _context.SaveChanges();
-
         return Json(result);
     }
 

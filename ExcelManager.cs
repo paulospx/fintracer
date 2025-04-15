@@ -22,8 +22,65 @@ namespace FinTracer
             return worksheet;
         }
 
+
+        public static List<string> ReadAllRows(string filePath, string sheet = "AC ZC YC")
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var allRowsValues = new List<string>();
+            var worksheet = GetWorksheet(filePath, sheet);
+            int totalRows = worksheet.Dimension.End.Row;
+            for (int row = 1; row <= totalRows; row++)
+            {
+                var value = worksheet.Cells[row, 1].Text;
+                allRowsValues.Add(value);
+            }
+            return allRowsValues;
+        }
+
+
+        public static List<int> GetMaturities(string filePath, string sheet = "AC ZC YC")
+        {
+            int MATURITIES_COLUMM = 1;
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var worksheet = GetWorksheet(filePath, sheet);
+            var rowIndexes = new List<int>();
+            int totalRows = worksheet.Dimension.End.Row;
+            for (int row = 2; row <= totalRows; row++)
+            {
+                var maturityValue= worksheet.Cells[row, MATURITIES_COLUMM].Text;
+                if (!string.IsNullOrEmpty(maturityValue))
+                {
+                    var maturity = int.Parse(maturityValue);
+                    rowIndexes.Add(maturity);
+                }
+            }
+            return rowIndexes;
+        }
+
+
+        public static (int Min, int Max) GetMinMaxRowIndexesByText(string filePath, string text, string sheet = "AC ZC YC")
+        {
+            int CURRENCY_COLUMN = 2;
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var worksheet = GetWorksheet(filePath, sheet);
+            var rowIndexes = new List<int>();
+            int totalRows = worksheet.Dimension.End.Row;
+            for (int row = 1; row <= totalRows; row++)
+            {
+                if (worksheet.Cells[row, CURRENCY_COLUMN].Text.Equals(text, StringComparison.OrdinalIgnoreCase))
+                {
+                    rowIndexes.Add(row);
+                }
+            }
+            return (rowIndexes.Min(), rowIndexes.Max());
+        }
+        // var index = GetMinMaxRowIndexesByText(filePath, "EUR", sheet);
+
+
+
         public static List<string> ReadFirstRow(string filePath, string sheet = "AC ZC YC")
         {
+            
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             var firstRowValues = new List<string>();
             var worksheet = GetWorksheet(filePath, sheet);
@@ -39,38 +96,54 @@ namespace FinTracer
         public static ColumnValues GetColumnByHeader(string filePath, string columnName, string sheet = "AC ZC YC")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            var columnValues = new List<string>();
-            var worksheet = GetWorksheet(filePath, sheet);
 
-            int totalColumns = worksheet.Dimension.End.Column;
-            int targetColumnIndex = -1;
-
-            for (int col = 1; col <= totalColumns; col++)
+            using (var package = new ExcelPackage(new FileInfo(filePath)))
             {
-                if (worksheet.Cells[1, col].Text.Equals(columnName, StringComparison.OrdinalIgnoreCase))
+                var worksheet = package.Workbook.Worksheets[sheet];
+                if (worksheet == null)
+                    throw new ArgumentException($"Sheet '{sheet}' does not exist in the file '{filePath}'.");
+
+                var data = worksheet.Cells.Value as object[,];
+                if (data == null)
+                    throw new InvalidOperationException("Failed to load worksheet data.");
+
+                int totalRows = data.GetLength(0);
+                int totalColumns = data.GetLength(1);
+
+                int targetColumnIndex = -1;
+                int currencyColumnIndex = -1;
+
+                // Find column indexes
+                for (int col = 0; col < totalColumns; col++)
                 {
-                    targetColumnIndex = col;
-                    break;
+                    var header = data[0, col]?.ToString();
+                    if (header?.Equals(columnName, StringComparison.OrdinalIgnoreCase) == true)
+                        targetColumnIndex = col;
+                    if (header?.Equals("Currency", StringComparison.OrdinalIgnoreCase) == true)
+                        currencyColumnIndex = col;
                 }
-            }
 
-            if (targetColumnIndex == -1)
-            {
-                Log.Error($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
-                throw new ArgumentException($"Column '{columnName}' not found in the first row of the sheet {sheet} on the file {filePath}.");
-            }
+                if (targetColumnIndex == -1)
+                    throw new ArgumentException($"Column '{columnName}' not found in the sheet '{sheet}'.");
+                if (currencyColumnIndex == -1)
+                    throw new ArgumentException($"Column 'Currency' not found in the sheet '{sheet}'.");
 
-            int totalRows = worksheet.Dimension.End.Row;
-            for (int row = 2; row <= totalRows; row++)
-            {
-                columnValues.Add(worksheet.Cells[row, targetColumnIndex].Text);
-            }
+                // Extract data
+                var columnValues = new List<string>();
+                for (int row = 1; row < totalRows; row++) // Start from row 1 (skip header)
+                {
+                    if (data[row, currencyColumnIndex]?.ToString().Equals("EUR", StringComparison.OrdinalIgnoreCase) == true)
+                    {
+                        columnValues.Add(data[row, targetColumnIndex]?.ToString());
+                    }
+                }
 
-            return new ColumnValues
-            {
-                Name = columnName,
-                Data = columnValues.ToArray()
-            };
+                return new ColumnValues
+                {
+                    Name = columnName,
+                    Data = columnValues.ToArray()
+                };
+            }
         }
 
 
@@ -128,23 +201,17 @@ namespace FinTracer
 
         public static List<string> GetFilesWithExtension(string directoryPath, string fileExtension)
         {
-            var fileNames = new List<string>();
-
             if (!Directory.Exists(directoryPath))
             {
                 Log.Warning($"The directory at {directoryPath} does not exist.");
-            }
-               
-            var files = Directory.GetFiles(directoryPath, $"*.{fileExtension}", SearchOption.TopDirectoryOnly);
-
-            foreach (var file in files)
-            {
-                fileNames.Add(Path.GetFileName(file));
+                return new List<string>();
             }
 
-            return fileNames.Where(str => !string.IsNullOrEmpty(str)).ToList();
+            return Directory.EnumerateFiles(directoryPath, $"*.{fileExtension}", SearchOption.TopDirectoryOnly)
+                            .Select(Path.GetFileName)
+                            .Where(name => !string.IsNullOrEmpty(name))
+                            .ToList();
         }
-
 
         public static List<CompareModel> CalculateDeltas(string title, string sourceFile, string targetFile, ColumnValues source, ColumnValues target, IEnumerable<string> maturities, string period)
         {
@@ -165,7 +232,7 @@ namespace FinTracer
 
             result.Add(new CompareModel
             {
-                Title = $"Delta {source.Name} {target.Name}",
+                Title = $"{source.Name}",
                 SourceFile = sourceFile,
                 TargetFile = targetFile,
                 SourceCurve = JsonConvert.SerializeObject(source.Data),
@@ -175,6 +242,7 @@ namespace FinTracer
                 CreatedAt = DateTime.Now,
                 Comments = "",
                 Description = "",
+                DeltaSum = delta.Data.Cast<double>().Sum(),
                 Maturities = string.Join(",",maturities.ToList()),
                 Period = period
             });
@@ -213,6 +281,7 @@ namespace FinTracer
         public static List<ColumnValues> GetColumnsByHeaders(string filePath, string columnNames, string sheet = "AC ZC YC")
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            var index = GetMinMaxRowIndexesByText(filePath, "EUR", sheet);
 
             var resultData = new List<ColumnValues>();
 
@@ -255,7 +324,7 @@ namespace FinTracer
                 }
 
                 int totalRows = worksheet.Dimension.End.Row;
-                for (int row = 2; row <= totalRows; row++) // Start from row 2 to skip the header
+                for (int row = index.Min; row <= index.Max; row++) // Start from row 2 to skip the header
                 {
                     foreach (var colName in columnNamesArray)
                     {
@@ -292,9 +361,6 @@ namespace FinTracer
                 Name = $"delta-{curve1.Name}-{curve2.Name}",
                 Data = new object[curve1.Data.Length]
             };
-
-            // if (curve1.Data.Length != curve2.Data.Length)
-            //     throw new ArgumentException("The two curves must have the same number of data points.");
 
             double sum = 0;
             var differences = new List<object>();
@@ -405,6 +471,7 @@ namespace FinTracer
             return Math.Sqrt(sumSquaredErrors / n);
         }
 
+        
         public static double CalculateMAD(double[] f, double[] g)
         {
             int n = f.Length;
@@ -425,17 +492,16 @@ namespace FinTracer
 
             for (int i = 0; i < n - 1; i++)
             {
-                // Calculate trapezoid areas for each segment
                 double dx = x[i + 1] - x[i];
                 double areaF = 0.5 * dx * (f[i] + f[i + 1]);
                 double areaG = 0.5 * dx * (g[i] + g[i + 1]);
 
-                // Add absolute area difference
                 totalAreaDifference += Math.Abs(areaF - areaG);
             }
             return totalAreaDifference;
         }
 
+        
         public static List<string> FilterStringsContainingText(List<string> inputList, string searchText)
         {
             if (string.IsNullOrEmpty(searchText) || inputList == null || inputList.Count == 0)

@@ -16,6 +16,7 @@ namespace FinTracer.Models
         public required string TargetCurve { get; set; }
         public string? Maturities { get; set; }
         public string? Delta { get; set; }
+        public double DeltaSum { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime CreatedAt { get; set; }
     }

@@ -65,7 +65,7 @@
         $.get("/Timeline/Json", function(result){
             $.each(result, function (i, item) {
                 var id = item.timeLineId.replaceAll("-","");
-
+                // console.log(item.series);
                 Highcharts.chart(id, {
                     title: {
                         text: item.title,

@@ -1,0 +1,90 @@
+﻿@model FinTracer.Models.CompareModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>CompareModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comments" class="control-label"></label>
+                <input asp-for="Comments" class="form-control" />
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Period" class="control-label"></label>
+                <input asp-for="Period" class="form-control" />
+                <span asp-validation-for="Period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceFile" class="control-label"></label>
+                <input asp-for="SourceFile" class="form-control" />
+                <span asp-validation-for="SourceFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetFile" class="control-label"></label>
+                <input asp-for="TargetFile" class="form-control" />
+                <span asp-validation-for="TargetFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceCurve" class="control-label"></label>
+                <input asp-for="SourceCurve" class="form-control" />
+                <span asp-validation-for="SourceCurve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetCurve" class="control-label"></label>
+                <input asp-for="TargetCurve" class="form-control" />
+                <span asp-validation-for="TargetCurve" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Maturities" class="control-label"></label>
+                <input asp-for="Maturities" class="form-control" />
+                <span asp-validation-for="Maturities" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Delta" class="control-label"></label>
+                <input asp-for="Delta" class="form-control" />
+                <span asp-validation-for="Delta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

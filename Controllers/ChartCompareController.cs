@@ -97,9 +97,19 @@ namespace FinTracer.Controllers
             return Json(cols);
         }
 
+
+        public ActionResult GetMaturities(string excel = "Book_3.xlsx")
+        {
+            string _reportingPath = _configuration["Reporting:DataPath"] ?? string.Empty;
+            var maturities = ExcelManager.GetMaturities($"{_reportingPath}\\{excel}");
+            return Json(maturities);
+        }
+
+
         public ActionResult GetSerie(string name, string excel = "Book_3.xlsx")
         {
             string _reportingPath = _configuration["Reporting:DataPath"] ?? string.Empty;
+
             var serie = ExcelManager.GetColumnsByHeaders($"{_reportingPath}\\{excel}", name);
             return Json(serie);
         }
