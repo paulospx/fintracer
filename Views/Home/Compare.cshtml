@@ -11,7 +11,7 @@
 <div class="row mb-3">
     <div class="col-md-4">
         <label for="periodSelect" class="form-label">Select Period</label>
-        <select id="periodSelect" class="form-select" onchange="showComparison();">
+        <select id="periodSelect" class="form-select" onchange="showComparison();calculateSummary();">
             <option value="" disabled selected>Loading periods...</option>
         </select>
     </div>
@@ -60,15 +60,12 @@
 
 <!-- Charts-->
 <div class="row">
-    <div class="col-sm-6">
-        <h2>Container 1</h2>
+    <div class="col-sm-12">
+        <h2>Overview</h2>
         <div id="container1"></div>
     </div>
-    <div class="col-sm-6">
-        <h2>Container 2</h2>
-        <div id="container2"></div>
-    </div>
 </div>
+
 <div id="comp">
 </div>
 
@@ -77,181 +74,120 @@
         colors: ['#4ACB82', '#8EE6EF', '#FF40EA', '#7872C0', '#E92531', '#FFB900', '#969696', '#FF409B'], // a.s.r. Palette
     });
 
-    const series = [{
-        name: 'Athletics',
-        id: 'athletics',
-        marker: {
-            symbol: 'circle'
-        }
-    },
-    {
-        name: 'Triathlon',
-        id: 'triathlon',
-        marker: {
-            symbol: 'triangle'
-        }
-    },
-    {
-        name: 'Volleyball',
-        id: 'volleyball',
-        marker: {
-            symbol: 'square'
-        }
-    }];
+    function generateSummaryChart(data) {
+            const series = [{
+                name: 'Up',
+                id: 'up',
+                marker: {
+                    symbol: 'circle'
+                }
+            },
+            {
+                name: 'Down',
+                id: 'down',
+                marker: {
+                    symbol: 'triangle'
+                }
+            },
+            {
+                name: 'Aegon',
+                id: 'aegon',
+                marker: {
+                    symbol: 'circle'
+                }
+            },
+            {
+                name: 'ASR',
+                id: 'asr',
+                marker: {
+                    symbol: 'triangle'
+                }
+            },
+            {
+                name: 'Other',
+                id: 'other',
+                marker: {
+                    symbol: 'square'
+                }
+            }];
 
+            series.forEach(function(s){
+                var catdata = [];
+                data.forEach(function(d) {
+                    
+                    if (s.id==d.category) {
+                        catdata.push([d.maturity,d.delta]);
+                    }
+                });
+                s.data = catdata;
+            });
 
-async function getData() {
-    const response = await fetch(
-        '/data/olympic2012.json'
-    );
-    return response.json();
-}
-
-getData().then(data => {
-    const getData = sportName => {
-        const temp = [];
-        data.forEach(elm => {
-            if (elm.sport === sportName && elm.weight > 0 && elm.height > 0) {
-                temp.push([elm.height, elm.weight]);
-            }
+            Highcharts.chart('container1', {
+            chart: {
+                type: 'scatter',
+                zooming: {
+                    type: 'xy'
+                }
+            },
+            title: {
+                text: 'Overview of Differences by Curve Category'
+            },
+            subtitle: {
+                text: 'Source file Here'
+            },
+            xAxis: {
+                title: {
+                    text: 'Maturities'
+                },
+                labels: {
+                    format: '{value}Y'
+                },
+                startOnTick: true,
+                endOnTick: true,
+                showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: 'Values'
+                },
+                labels: {
+                    format: '{value}'
+                }
+            },
+            legend: {
+                enabled: true
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 2.5,
+                        symbol: 'circle',
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    jitter: {
+                        x: 0.005
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: 'Difference: {point.x} <br /> Maturity: {point.y} Y'
+            },
+            series
         });
-        return temp;
-    };
-    series.forEach(s => {
-        s.data = getData(s.id);
-    });
 
-
-    Highcharts.chart('container1', {
-        chart: {
-            type: 'scatter',
-            zooming: {
-                type: 'xy'
-            }
-        },
-        title: {
-            text: 'Olympics athletes by height and weight'
-        },
-        subtitle: {
-            text: 'Source file Here'
-        },
-        xAxis: {
-            title: {
-                text: 'Height'
-            },
-            labels: {
-                format: '{value} m'
-            },
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true
-        },
-        yAxis: {
-            title: {
-                text: 'Weight'
-            },
-            labels: {
-                format: '{value} kg'
-            }
-        },
-        legend: {
-            enabled: true
-        },
-        plotOptions: {
-            scatter: {
-                marker: {
-                    radius: 2.5,
-                    symbol: 'circle',
-                    states: {
-                        hover: {
-                            enabled: true,
-                            lineColor: 'rgb(100,100,100)'
-                        }
-                    }
-                },
-                states: {
-                    hover: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                jitter: {
-                    x: 0.005
-                }
-            }
-        },
-        tooltip: {
-            pointFormat: 'Height: {point.x} m <br /> Weight: {point.y} kg'
-        },
-        series
-    });
-
-    Highcharts.chart('container2', {
-        chart: {
-            type: 'scatter',
-            zooming: {
-                type: 'xy'
-            }
-        },
-        title: {
-            text: 'Olympics athletes by height and weight'
-        },
-        subtitle: {
-            text: 'Source file Here'
-        },
-        xAxis: {
-            title: {
-                text: 'Height'
-            },
-            labels: {
-                format: '{value} m'
-            },
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true
-        },
-        yAxis: {
-            title: {
-                text: 'Weight'
-            },
-            labels: {
-                format: '{value} kg'
-            }
-        },
-        legend: {
-            enabled: true
-        },
-        plotOptions: {
-            scatter: {
-                marker: {
-                    radius: 2.5,
-                    symbol: 'circle',
-                    states: {
-                        hover: {
-                            enabled: true,
-                            lineColor: 'rgb(100,100,100)'
-                        }
-                    }
-                },
-                states: {
-                    hover: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                },
-                jitter: {
-                    x: 0.005
-                }
-            }
-        },
-        tooltip: {
-            pointFormat: 'Height: {point.x} m <br /> Weight: {point.y} kg'
-        },
-        series
-    });
-});
+    }
 
     function createChart(id, title, data) {
         Highcharts.chart(id, {
@@ -309,6 +245,41 @@ getData().then(data => {
                     }
                 }]
             }
+        });
+    }
+
+    function getCategory(curveName) {
+        curveName = curveName.toLowerCase();
+        var category = "other";
+        if (curveName.includes("up")) {
+            category = "up";
+        } else if (curveName.includes("down")) {
+            category = "down";
+        } else if (curveName.includes("cra")) {
+            category = "cra";
+        } else if (curveName.includes("aegon")) {
+            category = "aegon";
+        } else if (curveName.includes("asr")) {
+            category = "asr";
+        } 
+        return category;
+    }
+
+
+
+    
+    function calculateSummary() {
+        var period = $("#periodSelect").val();
+        $.get("/Compare/Summary", {period:period, text:getCheckedValuesCSV()},function(result) {
+                var summary = [];
+            result.forEach(function(s){
+                var deltas = JSON.parse(s.delta);
+                for(m = 0; m < deltas.length; m++) {
+                    summary.push({maturity:m+1,delta:deltas[m],sum:s.deltaSum,period:s.period,title:s.title, category:getCategory(s.title)});
+                }
+            });
+            generateSummaryChart(summary);
+            //console.log(summary);
         });
     }
 
