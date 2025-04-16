@@ -1,0 +1,325 @@
+2025-04-16 19:47:39.259 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/ChartCompare/Bands.cshtml'.
+2025-04-16 19:47:39.305 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/ChartCompare/Heatmap.cshtml'.
+2025-04-16 19:47:39.309 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/ChartCompare/Index.cshtml'.
+2025-04-16 19:47:39.311 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/ChartCompare/Scatter.cshtml'.
+2025-04-16 19:47:39.313 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Compare/Create.cshtml'.
+2025-04-16 19:47:39.314 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Compare/Delete.cshtml'.
+2025-04-16 19:47:39.316 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Compare/Details.cshtml'.
+2025-04-16 19:47:39.318 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Compare/Edit.cshtml'.
+2025-04-16 19:47:39.319 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Compare/Index.cshtml'.
+2025-04-16 19:47:39.322 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/FileTransfers/Create.cshtml'.
+2025-04-16 19:47:39.323 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/FileTransfers/Delete.cshtml'.
+2025-04-16 19:47:39.325 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/FileTransfers/Details.cshtml'.
+2025-04-16 19:47:39.326 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/FileTransfers/Edit.cshtml'.
+2025-04-16 19:47:39.328 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/FileTransfers/Index.cshtml'.
+2025-04-16 19:47:39.329 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Home/Category.cshtml'.
+2025-04-16 19:47:39.330 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Home/Compare.cshtml'.
+2025-04-16 19:47:39.332 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Home/File.cshtml'.
+2025-04-16 19:47:39.334 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Home/Index.cshtml'.
+2025-04-16 19:47:39.336 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Home/Privacy.cshtml'.
+2025-04-16 19:47:39.338 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/Error.cshtml'.
+2025-04-16 19:47:39.340 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/_ValidationScriptsPartial.cshtml'.
+2025-04-16 19:47:39.341 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Timeline/Index.cshtml'.
+2025-04-16 19:47:39.342 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/_ViewImports.cshtml'.
+2025-04-16 19:47:39.343 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/_ViewStart.cshtml'.
+2025-04-16 19:47:39.344 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/_Layout.cshtml'.
+2025-04-16 19:47:39.355 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2025-04-16 19:47:39.450 +02:00 [DBG] Hosting starting
+2025-04-16 19:47:39.485 +02:00 [INF] User profile is available. Using 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-04-16 19:47:39.501 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-22e23e19-442a-4894-a058-e0315ba0ff9b.xml'.
+2025-04-16 19:47:39.509 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-308c99e0-f759-4cc0-96f7-6a31e578b6ee.xml'.
+2025-04-16 19:47:39.512 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-3387b2f0-e77f-4c81-b124-8d1b709d2c81.xml'.
+2025-04-16 19:47:39.514 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-523fb05c-06fd-4d08-bd10-9c3de192bab8.xml'.
+2025-04-16 19:47:39.516 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-66b6231b-9a2b-46a3-a526-402214631d8d.xml'.
+2025-04-16 19:47:39.518 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-b2cf890b-bf42-46ca-9bf1-446a7a93dda1.xml'.
+2025-04-16 19:47:39.520 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-b8a9ccd7-0fff-44bf-bb04-27f575608bbe.xml'.
+2025-04-16 19:47:39.523 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-d1f3ac45-6a1a-46b4-8b62-ecec8fd77c2a.xml'.
+2025-04-16 19:47:39.525 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-f10815a1-3ff3-43f7-90ed-788f5b754e6f.xml'.
+2025-04-16 19:47:39.527 +02:00 [DBG] Reading data from file 'C:\Users\pssp2\AppData\Local\ASP.NET\DataProtection-Keys\key-f682b2d9-e889-4c6a-b4c8-efede3731aef.xml'.
+2025-04-16 19:47:39.534 +02:00 [DBG] Found key {22e23e19-442a-4894-a058-e0315ba0ff9b}.
+2025-04-16 19:47:39.541 +02:00 [DBG] Found key {308c99e0-f759-4cc0-96f7-6a31e578b6ee}.
+2025-04-16 19:47:39.545 +02:00 [DBG] Found key {3387b2f0-e77f-4c81-b124-8d1b709d2c81}.
+2025-04-16 19:47:39.546 +02:00 [DBG] Found key {523fb05c-06fd-4d08-bd10-9c3de192bab8}.
+2025-04-16 19:47:39.548 +02:00 [DBG] Found key {66b6231b-9a2b-46a3-a526-402214631d8d}.
+2025-04-16 19:47:39.549 +02:00 [DBG] Found key {b2cf890b-bf42-46ca-9bf1-446a7a93dda1}.
+2025-04-16 19:47:39.552 +02:00 [DBG] Found key {b8a9ccd7-0fff-44bf-bb04-27f575608bbe}.
+2025-04-16 19:47:39.554 +02:00 [DBG] Found key {d1f3ac45-6a1a-46b4-8b62-ecec8fd77c2a}.
+2025-04-16 19:47:39.555 +02:00 [DBG] Found key {f10815a1-3ff3-43f7-90ed-788f5b754e6f}.
+2025-04-16 19:47:39.557 +02:00 [DBG] Found key {f682b2d9-e889-4c6a-b4c8-efede3731aef}.
+2025-04-16 19:47:39.563 +02:00 [DBG] Considering key {f682b2d9-e889-4c6a-b4c8-efede3731aef} with expiration date 2025-05-08 16:23:30Z as default key.
+2025-04-16 19:47:39.568 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-04-16 19:47:39.571 +02:00 [DBG] Decrypting secret element using Windows DPAPI.
+2025-04-16 19:47:39.573 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2025-04-16 19:47:39.578 +02:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2025-04-16 19:47:39.581 +02:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2025-04-16 19:47:39.584 +02:00 [DBG] Using key {f682b2d9-e889-4c6a-b4c8-efede3731aef} as the default key.
+2025-04-16 19:47:39.587 +02:00 [DBG] Key ring with default key {f682b2d9-e889-4c6a-b4c8-efede3731aef} was loaded during application startup.
+2025-04-16 19:47:39.592 +02:00 [DBG] Middleware loaded
+2025-04-16 19:47:39.595 +02:00 [DBG] Middleware loaded. Script /_framework/aspnetcore-browser-refresh.js (16503 B).
+2025-04-16 19:47:39.597 +02:00 [DBG] Middleware loaded. Script /_framework/blazor-hotreload.js (799 B).
+2025-04-16 19:47:39.742 +02:00 [DBG] Middleware configuration started with options: {AllowedHosts = *, AllowEmptyHosts = True, IncludeFailureMessage = True}
+2025-04-16 19:47:39.747 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2025-04-16 19:47:39.763 +02:00 [DBG] Middleware loaded: DOTNET_MODIFIABLE_ASSEMBLIES=debug, __ASPNETCORE_BROWSER_TOOLS=true
+2025-04-16 19:47:39.892 +02:00 [INF] Now listening on: https://localhost:7221
+2025-04-16 19:47:39.896 +02:00 [INF] Now listening on: http://localhost:5192
+2025-04-16 19:47:39.898 +02:00 [DBG] Loaded hosting startup assembly FinTracer
+2025-04-16 19:47:39.899 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+2025-04-16 19:47:39.901 +02:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2025-04-16 19:47:39.903 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2025-04-16 19:47:39.910 +02:00 [DBG] Executing API description provider 'EndpointMetadataApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-04-16 19:47:39.915 +02:00 [DBG] Executing API description provider 'DefaultApiDescriptionProvider' from assembly Microsoft.AspNetCore.Mvc.ApiExplorer v9.0.0.0.
+2025-04-16 19:47:39.946 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-16 19:47:39.948 +02:00 [INF] Hosting environment: Development
+2025-04-16 19:47:39.950 +02:00 [INF] Content root path: C:\Repos\FinTracer
+2025-04-16 19:47:39.952 +02:00 [DBG] Hosting started
+2025-04-16 19:47:40.147 +02:00 [DBG] Connection id "0HNBT1R467DR0" accepted.
+2025-04-16 19:47:40.149 +02:00 [DBG] Connection id "0HNBT1R467DR1" accepted.
+2025-04-16 19:47:40.152 +02:00 [DBG] Connection id "0HNBT1R467DR0" started.
+2025-04-16 19:47:40.153 +02:00 [DBG] Connection id "0HNBT1R467DR1" started.
+2025-04-16 19:47:40.185 +02:00 [DBG] Connection id "0HNBT1R467DR1" received FIN.
+2025-04-16 19:47:40.185 +02:00 [DBG] Connection id "0HNBT1R467DR0" received FIN.
+2025-04-16 19:47:40.196 +02:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-04-16 19:47:40.196 +02:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2025-04-16 19:47:40.220 +02:00 [DBG] Connection id "0HNBT1R467DR1" stopped.
+2025-04-16 19:47:40.220 +02:00 [DBG] Connection id "0HNBT1R467DR0" stopped.
+2025-04-16 19:47:40.225 +02:00 [DBG] Connection id "0HNBT1R467DR0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-04-16 19:47:40.225 +02:00 [DBG] Connection id "0HNBT1R467DR1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2025-04-16 19:47:40.394 +02:00 [DBG] Connection id "0HNBT1R467DR2" accepted.
+2025-04-16 19:47:40.408 +02:00 [DBG] Connection id "0HNBT1R467DR2" started.
+2025-04-16 19:47:40.470 +02:00 [DBG] Connection 0HNBT1R467DR2 established using the following protocol: "Tls13"
+2025-04-16 19:47:40.537 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/ - null null
+2025-04-16 19:47:40.722 +02:00 [DBG] 2 candidate(s) found for the request path '/'
+2025-04-16 19:47:40.725 +02:00 [DBG] Endpoint 'FinTracer.Controllers.HomeController.Index (FinTracer)' with route pattern '{controller=Home}/{action=Index}/{id?}' is valid for the request path '/'
+2025-04-16 19:47:40.730 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' was rejected by constraint 'path':'Microsoft.AspNetCore.Builder.StaticAssetDevelopmentRuntimeHandler+FileExistsConstraint' with value 'null' for the request path '/'
+2025-04-16 19:47:40.734 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is not valid for the request path '/'
+2025-04-16 19:47:40.737 +02:00 [DBG] Request matched endpoint 'FinTracer.Controllers.HomeController.Index (FinTracer)'
+2025-04-16 19:47:40.742 +02:00 [INF] Executing endpoint 'FinTracer.Controllers.HomeController.Index (FinTracer)'
+2025-04-16 19:47:40.777 +02:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller FinTracer.Controllers.HomeController (FinTracer).
+2025-04-16 19:47:40.783 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2025-04-16 19:47:40.785 +02:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2025-04-16 19:47:40.788 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648)","Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)"]
+2025-04-16 19:47:40.791 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2025-04-16 19:47:40.793 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2025-04-16 19:47:40.796 +02:00 [DBG] Executing controller factory for controller FinTracer.Controllers.HomeController (FinTracer)
+2025-04-16 19:47:40.857 +02:00 [DBG] Executed controller factory for controller FinTracer.Controllers.HomeController (FinTracer)
+2025-04-16 19:47:40.865 +02:00 [DBG] View lookup cache miss for view 'Index' in controller 'Home'.
+2025-04-16 19:47:40.873 +02:00 [INF] Executing ViewResult, running view Index.
+2025-04-16 19:47:40.878 +02:00 [DBG] The view path '/Views/Home/Index.cshtml' was found in 11.9126ms.
+2025-04-16 19:47:40.914 +02:00 [DBG] View lookup cache miss for view '_Layout' in controller 'Home'.
+2025-04-16 19:47:40.961 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Index],controller=[Home])
+2025-04-16 19:47:40.968 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in  and 
+2025-04-16 19:47:40.972 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /
+2025-04-16 19:47:40.977 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Index],controller=[Home])
+2025-04-16 19:47:40.980 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in  and 
+2025-04-16 19:47:40.982 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /
+2025-04-16 19:47:40.985 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Index],controller=[ChartCompare])
+2025-04-16 19:47:40.987 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /ChartCompare and 
+2025-04-16 19:47:40.990 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /ChartCompare
+2025-04-16 19:47:40.992 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Index],controller=[Timeline])
+2025-04-16 19:47:40.994 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /Timeline and 
+2025-04-16 19:47:40.995 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /Timeline
+2025-04-16 19:47:40.997 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Index],controller=[FileTransfers])
+2025-04-16 19:47:40.999 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /FileTransfers and 
+2025-04-16 19:47:41.001 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /FileTransfers
+2025-04-16 19:47:41.004 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Compare],controller=[Home])
+2025-04-16 19:47:41.007 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /Home/Compare and 
+2025-04-16 19:47:41.009 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /Home/Compare
+2025-04-16 19:47:41.013 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Privacy],controller=[Home])
+2025-04-16 19:47:41.016 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /Home/Privacy and 
+2025-04-16 19:47:41.020 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /Home/Privacy
+2025-04-16 19:47:41.023 +02:00 [DBG] Found the endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] for address (area=[],action=[Privacy],controller=[Home])
+2025-04-16 19:47:41.027 +02:00 [DBG] Successfully processed template {controller=Home}/{action=Index}/{id?} for Route: {controller=Home}/{action=Index}/{id?} resulting in /Home/Privacy and 
+2025-04-16 19:47:41.030 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Home}/{action=Index}/{id?}"] with result /Home/Privacy
+2025-04-16 19:47:41.039 +02:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2025-04-16 19:47:41.045 +02:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2025-04-16 19:47:41.061 +02:00 [INF] Executed ViewResult - view Index executed in 196.9168ms.
+2025-04-16 19:47:41.072 +02:00 [INF] Executed action FinTracer.Controllers.HomeController.Index (FinTracer) in 277.8458ms
+2025-04-16 19:47:41.075 +02:00 [INF] Executed endpoint 'FinTracer.Controllers.HomeController.Index (FinTracer)'
+2025-04-16 19:47:41.078 +02:00 [DBG] Response markup was updated to include Browser Link script injection.
+2025-04-16 19:47:41.080 +02:00 [DBG] Response markup was updated to include browser refresh script injection.
+2025-04-16 19:47:41.084 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-04-16 19:47:41.099 +02:00 [DBG] 3 candidate(s) found for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-04-16 19:47:41.101 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/ - 200 null text/html; charset=utf-8 567.5716ms
+2025-04-16 19:47:41.180 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/css/site.css?v=Wb4aF3xF_Ik1bMMgNw2uCe5_Y2rcOme_3pJFAHGlx1k - null null
+2025-04-16 19:47:41.181 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/bootstrap/dist/css/bootstrap.min.css' is valid for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-04-16 19:47:41.166 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/css/site.css - null null
+2025-04-16 19:47:41.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/FinTracer.styles.css?v=xetZqzOijsXN-2XtVJK21R-oqLAceE7QisJwt1DjFcM - null null
+2025-04-16 19:47:41.187 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/css/bootstrap.min.css - null null
+2025-04-16 19:47:41.194 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/css/timeline-7.css - null null
+2025-04-16 19:47:41.197 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/_framework/aspnetcore-browser-refresh.js - null null
+2025-04-16 19:47:41.197 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/highcharts.js - null null
+2025-04-16 19:47:41.197 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/series-label.js - null null
+2025-04-16 19:47:41.200 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/bootstrap/dist/css/bootstrap.min.css' is valid for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-04-16 19:47:41.204 +02:00 [DBG] 3 candidate(s) found for the request path '/css/site.css'
+2025-04-16 19:47:41.204 +02:00 [DBG] 3 candidate(s) found for the request path '/css/site.css'
+2025-04-16 19:47:41.207 +02:00 [DBG] 3 candidate(s) found for the request path '/FinTracer.styles.css'
+2025-04-16 19:47:41.211 +02:00 [DBG] 3 candidate(s) found for the request path '/css/bootstrap.min.css'
+2025-04-16 19:47:41.214 +02:00 [DBG] 3 candidate(s) found for the request path '/css/timeline-7.css'
+2025-04-16 19:47:41.221 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/highcharts.js'
+2025-04-16 19:47:41.223 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/exporting.js - null null
+2025-04-16 19:47:41.225 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/series-label.js'
+2025-04-16 19:47:41.227 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/lib/bootstrap/dist/css/bootstrap.min.css'
+2025-04-16 19:47:41.228 +02:00 [DBG] Endpoint 'null' with route pattern 'css/site.css' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.230 +02:00 [DBG] Endpoint 'null' with route pattern 'css/site.css' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.231 +02:00 [DBG] Endpoint 'null' with route pattern 'FinTracer.styles.css' is valid for the request path '/FinTracer.styles.css'
+2025-04-16 19:47:41.232 +02:00 [DBG] Endpoint 'null' with route pattern 'css/bootstrap.min.css' is valid for the request path '/css/bootstrap.min.css'
+2025-04-16 19:47:41.233 +02:00 [DBG] Endpoint 'null' with route pattern 'css/timeline-7.css' is valid for the request path '/css/timeline-7.css'
+2025-04-16 19:47:41.235 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/highcharts.js' is valid for the request path '/js/highcharts/highcharts.js'
+2025-04-16 19:47:41.239 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/exporting.js'
+2025-04-16 19:47:41.240 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/series-label.js' is valid for the request path '/js/highcharts/series-label.js'
+2025-04-16 19:47:41.243 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.244 +02:00 [DBG] Endpoint 'null' with route pattern 'css/site.css' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.246 +02:00 [DBG] Endpoint 'null' with route pattern 'css/site.css' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.248 +02:00 [DBG] Endpoint 'null' with route pattern 'FinTracer.styles.css' is valid for the request path '/FinTracer.styles.css'
+2025-04-16 19:47:41.250 +02:00 [DBG] Endpoint 'null' with route pattern 'css/bootstrap.min.css' is valid for the request path '/css/bootstrap.min.css'
+2025-04-16 19:47:41.269 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/css/bootstrap.min.css'
+2025-04-16 19:47:41.254 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/highcharts.js' is valid for the request path '/js/highcharts/highcharts.js'
+2025-04-16 19:47:41.256 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/exporting.js' is valid for the request path '/js/highcharts/exporting.js'
+2025-04-16 19:47:41.259 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/series-label.js' is valid for the request path '/js/highcharts/series-label.js'
+2025-04-16 19:47:41.260 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.263 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.265 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/css/site.css'
+2025-04-16 19:47:41.267 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/FinTracer.styles.css'
+2025-04-16 19:47:41.252 +02:00 [DBG] Endpoint 'null' with route pattern 'css/timeline-7.css' is valid for the request path '/css/timeline-7.css'
+2025-04-16 19:47:41.274 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/highcharts.js'
+2025-04-16 19:47:41.279 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/series-label.js'
+2025-04-16 19:47:41.286 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.282 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.276 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/exporting.js' is valid for the request path '/js/highcharts/exporting.js'
+2025-04-16 19:47:41.292 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.271 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.300 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/css/timeline-7.css'
+2025-04-16 19:47:41.303 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.305 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.306 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.308 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.310 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/exporting.js'
+2025-04-16 19:47:41.311 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.313 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.314 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/offline-exporting.js - null null
+2025-04-16 19:47:41.314 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.315 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.316 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.321 +02:00 [INF] Sending file. Request path: 'css/site.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\2klifu9e8e-9gxciatw95.gz'
+2025-04-16 19:47:41.321 +02:00 [INF] Sending file. Request path: 'css/site.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\2klifu9e8e-9gxciatw95.gz'
+2025-04-16 19:47:41.336 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.324 +02:00 [INF] Sending file. Request path: 'FinTracer.styles.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\pm1qjactjs-j61ljml33b.gz'
+2025-04-16 19:47:41.328 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/offline-exporting.js'
+2025-04-16 19:47:41.329 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.330 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/export-data.js - null null
+2025-04-16 19:47:41.333 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/highcharts/accessibility.js - null null
+2025-04-16 19:47:41.334 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.321 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.338 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/css/site.css?v=Wb4aF3xF_Ik1bMMgNw2uCe5_Y2rcOme_3pJFAHGlx1k - 200 3645 text/css 161.762ms
+2025-04-16 19:47:41.339 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.340 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/lib/jquery/dist/jquery.min.js - null null
+2025-04-16 19:47:41.341 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/offline-exporting.js' is valid for the request path '/js/highcharts/offline-exporting.js'
+2025-04-16 19:47:41.344 +02:00 [INF] Sending file. Request path: 'css/timeline-7.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\oij7jomhzc-5cdbpy4zah.gz'
+2025-04-16 19:47:41.351 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/css/site.css - 200 3645 text/css 185.209ms
+2025-04-16 19:47:41.353 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/FinTracer.styles.css?v=xetZqzOijsXN-2XtVJK21R-oqLAceE7QisJwt1DjFcM - 200 1160 text/css 178.8801ms
+2025-04-16 19:47:41.360 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-04-16 19:47:41.361 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/export-data.js'
+2025-04-16 19:47:41.361 +02:00 [DBG] 3 candidate(s) found for the request path '/js/highcharts/accessibility.js'
+2025-04-16 19:47:41.364 +02:00 [DBG] 3 candidate(s) found for the request path '/lib/jquery/dist/jquery.min.js'
+2025-04-16 19:47:41.365 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/offline-exporting.js' is valid for the request path '/js/highcharts/offline-exporting.js'
+2025-04-16 19:47:41.367 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.386 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/css/timeline-7.css - 200 3959 text/css 192.0264ms
+2025-04-16 19:47:41.375 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/img/undraw_growth-curve.svg - null null
+2025-04-16 19:47:41.380 +02:00 [DBG] 3 candidate(s) found for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+2025-04-16 19:47:41.380 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/export-data.js' is valid for the request path '/js/highcharts/export-data.js'
+2025-04-16 19:47:41.381 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/accessibility.js' is valid for the request path '/js/highcharts/accessibility.js'
+2025-04-16 19:47:41.382 +02:00 [DBG] Script injected: /_framework/aspnetcore-browser-refresh.js
+2025-04-16 19:47:41.383 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/jquery/dist/jquery.min.js' is valid for the request path '/lib/jquery/dist/jquery.min.js'
+2025-04-16 19:47:41.385 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/offline-exporting.js'
+2025-04-16 19:47:41.371 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/js/site.js?v=7byoW7LhgJMFQdtGpSgy4E5ixDUiHbaQnT9yhJ7O0Ao - null null
+2025-04-16 19:47:41.395 +02:00 [DBG] 3 candidate(s) found for the request path '/img/undraw_growth-curve.svg'
+2025-04-16 19:47:41.396 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/bootstrap/dist/js/bootstrap.bundle.min.js' is valid for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+2025-04-16 19:47:41.398 +02:00 [INF] Sending file. Request path: 'lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\2w0xob28p9-46ein0sx1k.gz'
+2025-04-16 19:47:41.416 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/export-data.js' is valid for the request path '/js/highcharts/export-data.js'
+2025-04-16 19:47:41.418 +02:00 [DBG] Endpoint 'null' with route pattern 'js/highcharts/accessibility.js' is valid for the request path '/js/highcharts/accessibility.js'
+2025-04-16 19:47:41.423 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/_framework/aspnetcore-browser-refresh.js - 200 16503 application/javascript; charset=utf-8 226.1081ms
+2025-04-16 19:47:41.427 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/jquery/dist/jquery.min.js' is valid for the request path '/lib/jquery/dist/jquery.min.js'
+2025-04-16 19:47:41.432 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.438 +02:00 [DBG] 3 candidate(s) found for the request path '/js/site.js'
+2025-04-16 19:47:41.440 +02:00 [DBG] Endpoint 'null' with route pattern 'img/undraw_growth-curve.svg' is valid for the request path '/img/undraw_growth-curve.svg'
+2025-04-16 19:47:41.444 +02:00 [DBG] Endpoint 'null' with route pattern 'lib/bootstrap/dist/js/bootstrap.bundle.min.js' is valid for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+2025-04-16 19:47:41.447 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.448 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/export-data.js'
+2025-04-16 19:47:41.450 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/highcharts/accessibility.js'
+2025-04-16 19:47:41.457 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/lib/jquery/dist/jquery.min.js'
+2025-04-16 19:47:41.458 +02:00 [INF] Sending file. Request path: 'css/bootstrap.min.css'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\eziscl9jwq-46ein0sx1k.gz'
+2025-04-16 19:47:41.458 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.460 +02:00 [DBG] Endpoint 'null' with route pattern 'js/site.js' is valid for the request path '/js/site.js'
+2025-04-16 19:47:41.479 +02:00 [INF] Sending file. Request path: 'js/highcharts/series-label.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\2hbgbbnir7-83obzgb3gg.gz'
+2025-04-16 19:47:41.465 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'
+2025-04-16 19:47:41.466 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/lib/bootstrap/dist/css/bootstrap.min.css - 200 232871 text/css 382.5311ms
+2025-04-16 19:47:41.468 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.472 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.474 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.476 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.462 +02:00 [DBG] Endpoint 'null' with route pattern 'img/undraw_growth-curve.svg' is valid for the request path '/img/undraw_growth-curve.svg'
+2025-04-16 19:47:41.480 +02:00 [DBG] Endpoint 'null' with route pattern 'js/site.js' is valid for the request path '/js/site.js'
+2025-04-16 19:47:41.481 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.483 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.492 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.495 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.497 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.498 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/css/bootstrap.min.css - 200 232871 text/css 311.3172ms
+2025-04-16 19:47:41.501 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/img/undraw_growth-curve.svg'
+2025-04-16 19:47:41.504 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/js/site.js'
+2025-04-16 19:47:41.510 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/series-label.js - 200 9275 text/javascript 312.9624ms
+2025-04-16 19:47:41.517 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.539 +02:00 [INF] Sending file. Request path: 'js/highcharts/highcharts.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\19o46mzohh-2f89c9veg7.gz'
+2025-04-16 19:47:41.546 +02:00 [INF] Sending file. Request path: 'js/highcharts/exporting.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\kf0m8lf8ok-ux9oyyoxqs.gz'
+2025-04-16 19:47:41.548 +02:00 [INF] Sending file. Request path: 'js/highcharts/offline-exporting.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\j0dgn6nn5g-fveez62644.gz'
+2025-04-16 19:47:41.548 +02:00 [INF] Sending file. Request path: 'js/highcharts/export-data.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\a5vdwaznda-t6nkksn60l.gz'
+2025-04-16 19:47:41.550 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.554 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.560 +02:00 [INF] Sending file. Request path: 'js/highcharts/accessibility.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\s5bi0c4sms-88v6yd1m1p.gz'
+2025-04-16 19:47:41.564 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.565 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.567 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.568 +02:00 [INF] Sending file. Request path: 'lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\rmjby0x8pj-o1o13a6vjx.gz'
+2025-04-16 19:47:41.569 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.570 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.572 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.574 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.576 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/highcharts.js - 200 275109 text/javascript 379.2454ms
+2025-04-16 19:47:41.577 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/exporting.js - 200 19677 text/javascript 354.5585ms
+2025-04-16 19:47:41.578 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/offline-exporting.js - 200 27033 text/javascript 264.3295ms
+2025-04-16 19:47:41.580 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.581 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/export-data.js - 200 12542 text/javascript 251.3712ms
+2025-04-16 19:47:41.585 +02:00 [INF] Sending file. Request path: 'lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\jjc1b28sv1-493y06b0oq.gz'
+2025-04-16 19:47:41.585 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/highcharts/accessibility.js - 200 135318 text/javascript 251.851ms
+2025-04-16 19:47:41.585 +02:00 [INF] Sending file. Request path: 'img/undraw_growth-curve.svg'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\ji80s6kica-s0sutcomov.gz'
+2025-04-16 19:47:41.592 +02:00 [INF] Sending file. Request path: 'js/site.js'. Physical path: 'C:\Repos\FinTracer\obj\Debug\net9.0\compressed\3wlglqq5ez-tgldfos601.gz'
+2025-04-16 19:47:41.600 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/lib/jquery/dist/jquery.min.js - 200 87576 text/javascript 260.1752ms
+2025-04-16 19:47:41.606 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.612 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.614 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.620 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 200 80764 text/javascript 260.6107ms
+2025-04-16 19:47:41.622 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/img/undraw_growth-curve.svg - 200 15991 image/svg+xml 246.9994ms
+2025-04-16 19:47:41.623 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/js/site.js?v=7byoW7LhgJMFQdtGpSgy4E5ixDUiHbaQnT9yhJ7O0Ao - 200 4803 text/javascript 252.3196ms
+2025-04-16 19:47:41.652 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/_vs/browserLink - null null
+2025-04-16 19:47:41.691 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7221/fonts/Memphis-Medium.ttf - null null
+2025-04-16 19:47:41.692 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/_vs/browserLink - 200 null text/javascript; charset=UTF-8 39.8141ms
+2025-04-16 19:47:41.695 +02:00 [DBG] 2 candidate(s) found for the request path '/fonts/Memphis-Medium.ttf'
+2025-04-16 19:47:41.700 +02:00 [DBG] Endpoint 'null' with route pattern 'fonts/Memphis-Medium.ttf' is valid for the request path '/fonts/Memphis-Medium.ttf'
+2025-04-16 19:47:41.703 +02:00 [DBG] Endpoint 'Fallback {**path:file}' with route pattern '{**path:file}' is valid for the request path '/fonts/Memphis-Medium.ttf'
+2025-04-16 19:47:41.705 +02:00 [DBG] Request matched endpoint 'null'
+2025-04-16 19:47:41.707 +02:00 [INF] Executing endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.709 +02:00 [INF] The file fonts/Memphis-Medium.ttf was not modified
+2025-04-16 19:47:41.711 +02:00 [DBG] Handled. Status code: 304 File: fonts/Memphis-Medium.ttf
+2025-04-16 19:47:41.713 +02:00 [INF] Executed endpoint 'Microsoft.AspNetCore.Routing.RouteEndpoint'
+2025-04-16 19:47:41.714 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7221/fonts/Memphis-Medium.ttf - 304 null application/x-font-ttf 23.6016ms

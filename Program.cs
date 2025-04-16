@@ -1,4 +1,5 @@
 using FinTracer;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // builder.Services.AddResponseCaching();
 builder.Services.AddDbContext<FinTraceContext>();
+
+//Add support to logging with SERILOG
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();
 
@@ -25,10 +30,12 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+// Uncomment to Add support to logging request with SERILOG
+// app.UseSerilogRequestLogging();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
