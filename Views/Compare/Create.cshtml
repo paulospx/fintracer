@@ -30,7 +30,7 @@
         <!-- Period Selection -->
         <div class="mb-3">
             <label for="period" class="form-label">Select Period</label>
-            <select class="form-select" id="period" required>
+            <select class="form-select" id="periodsel" required onchange="changePeriod(this.value)">
                 <option value="" disabled selected>Select a period</option>
                 <option value="2025M01">2025M01</option>
                 <option value="2025M02">2025M02</option>
@@ -49,6 +49,7 @@
                 <option value="2026M03">2026M03</option>
                 <option value="2026M04">2026M04</option>
             </select>
+            <input type="text" class="form-control" id="period" placeholder="Enter the period" value="" style="padding-top:5px">
         </div>
 
         <!-- Category -->
@@ -64,15 +65,24 @@
         </div>
 
         <!-- Submit Button -->
-        <div class="text-center">
+        <div class="text-right">
             <button type="button" onclick="submitCompare()" class="btn btn-primary">Compare</button>
-        </div>
-        <div class="spinner-border text-primary" role="status" id="statusCompare" style="display:none;">
-            <span class="sr-only">Comparing...</span>
         </div>
     </div>
 </div>
+
+<div class="row" style="display:none;" id="statusCompare">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+    </div>
+    Comparing...
+</div>
+
 <script>
+    function changePeriod(text) {
+        $("#period").val(text);
+    }
+
     function generateTimestamp() {
         const now = new Date();
         const year = now.getFullYear();
@@ -84,6 +94,8 @@
         return `${year}M${month}D${day}H${hours}m${minutes}s${seconds}`;
     }
 
+    $("#period").val(generateTimestamp());
+
     function submitCompare() {
         var period = $("#period").val()??generateTimestamp();
         var filename1 = $("#filePath1").val()??"C:\\Repos\\Data\\Curves\\Book_2.xlsx";
@@ -91,9 +103,20 @@
         var sheetname = $("#sheetName").val();
         $("#statusCompare").show();
         $.post("/Home/CompareCurves", { period : period, filename1:filename1, filename2: filename2, sheetname:sheetname}, function (data) {
-            // Handle the response data here
-            console.log(data);
+            var nrComparisons = data.length;
             $("#statusCompare").hide();
+            Toastify({
+                text: `Calculated ${nrComparisons} comparisons.`,
+                duration: 5000,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                className: "info",
+                onClick: function(){}
+            }).showToast();
+            // console.log(data);
         });
     }
 </script>
