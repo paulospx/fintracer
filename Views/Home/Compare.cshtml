@@ -8,62 +8,55 @@
 
 </div>
 
-<!--
-<div class="row" id="filter">
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Filter Options</h5>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="Search curves...">
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="up">
-                    <label class="form-check-label" for="up">Up</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="down">
-                    <label class="form-check-label" for="down">Down</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="cra">
-                    <label class="form-check-label" for="cra">CRA</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="delta-ladders">
-                    <label class="form-check-label" for="delta-ladders">Delta Ladders</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="lip">
-                    <label class="form-check-label" for="lip">LIP</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="aegon">
-                    <label class="form-check-label" for="aegon">Aegon</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="asr">
-                    <label class="form-check-label" for="asr">ASR</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="flattener">
-                    <label class="form-check-label" for="flattener">Flattener</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="steepener">
-                    <label class="form-check-label" for="steepener">Steepener</label>
-                </div>
-                <div class="mt-3">
-                    <button class="btn btn-primary w-100" onclick="filterCurveTypes()">Apply Filters</button>
-                    <button class="btn btn-secondary w-100 mt-2" onclick="clearCurveTypes()">Clear All</button>
-                </div>
-            </div>
+<div class="row mb-3">
+    <div class="col-md-4">
+        <label for="periodSelect" class="form-label">Select Period</label>
+        <select id="periodSelect" class="form-select" onchange="showComparison();">
+            <option value="" disabled selected>Loading periods...</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="up">
+            <label class="form-check-label" for="up">Up</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="down">
+            <label class="form-check-label" for="down">Down</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="cra">
+            <label class="form-check-label" for="cra">CRA</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="delta-ladders">
+            <label class="form-check-label" for="delta-ladders">Delta Ladders</label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="lip">
+            <label class="form-check-label" for="lip">LIP</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="aegon">
+            <label class="form-check-label" for="aegon">Aegon</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="asr">
+            <label class="form-check-label" for="asr">ASR</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flattener">
+            <label class="form-check-label" for="flattener">Flattener</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="steepener">
+            <label class="form-check-label" for="steepener">Steepener</label>
         </div>
     </div>
 </div>
--->
+
 
 <!-- Charts-->
 <div class="row">
@@ -343,18 +336,7 @@ getData().then(data => {
         return title;
     }
 
-    function toCSVLine(strings) {
-        return strings
-            .map(str => {
-                if (str.includes('"') || str.includes(',')) {
-                    return `"${str.replace(/"/g, '""')}"`;
-                }
-                return str;
-            })
-            .join(',');
-    }
-
-    function getCheckedValues() {
+    function getCheckedCheckboxes() {
         const checkedValues = [];
         $('.form-check-input:checked').each(function () {
             checkedValues.push($(this).attr('id'));
@@ -362,21 +344,11 @@ getData().then(data => {
         return checkedValues;
     }
 
-    function filterCurveTypes() {
-        var categories = getCheckedValues();
-        alert("TODO "+ toCSVLine(categories));
-        $("#filter").hide();
-    }
 
-    function clearCurveTypes(){
-        alert("TODO");
-    }
+    function showComparison() {
+        var period = $("#periodSelect").val();
 
-
-
-
-    $(document).ready(function () {
-        $.get("/Compare/List?period=2025M03",function(result) {
+        $.get("/Compare/Categories", {period:period, text:getCheckedValuesCSV()},function(result) {
             createChartDivs(result.length);
             var i = 1;
             result.forEach(function(comparison){
@@ -392,9 +364,33 @@ getData().then(data => {
                 ]
 
                 createChart(`comparison.delta${i}`,"Delta " + comparison.title, deltaSeries);
-
                 i=i+1;
             });
         });
+        }
+
+
+    $(document).ready(function () {
+        $.get("/Compare/Periods", function (data) {
+            const periodSelect = $("#periodSelect");
+            periodSelect.empty(); // Clear existing options
+
+            // Populate the select box with periods
+            if (data && data.length > 0) {
+                periodSelect.append('<option value="" disabled selected>Select a period</option>');
+                data.forEach(period => {
+                    periodSelect.append(`<option value="${period}">${period}</option>`);
+                });
+            } else {
+                periodSelect.append('<option value="" disabled>No periods available</option>');
+            }
+        }).fail(function () {
+            // Handle errors
+            const periodSelect = $("#periodSelect");
+            periodSelect.empty();
+            periodSelect.append('<option value="" disabled>Error loading periods</option>');
+        });
+
+
     });
 </script>

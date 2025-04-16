@@ -19,6 +19,43 @@ namespace FinTracer.Controllers
             return View(await _context.Comparisons.ToListAsync());
         }
 
+        // GET: Compare/Periods
+        public async Task<IActionResult> Periods()
+        {
+            var periods = await _context.Comparisons
+                .OrderByDescending(p => p.Period)
+                .Select(p => p.Period)
+                .Distinct()
+                .ToListAsync();
+            return Json(periods);
+        }
+
+        // GET: Compare/Categories
+        public async Task<IActionResult> Categories(string period, string text="")
+        {
+            var catArray = text.Split(',');
+
+
+            if (string.IsNullOrEmpty(text))
+            {
+                var periodResult = await _context.Comparisons
+                    .Where(p => p.Period == period)
+                    .Take(50)
+                    .ToListAsync();
+                return Json(periodResult);
+            }
+
+            var result = await _context.Comparisons
+                .Where(p => catArray.All(c => p.Title.Contains(c)) && (p.Period == period))
+                .OrderByDescending(p => p.DeltaSum)
+                .Take(50)
+                .ToListAsync();
+
+            return Json(result);
+        }
+
+
+        // GET: Compare/List
         public async Task<IActionResult> List(string period)
         {
             var result = await _context.Comparisons

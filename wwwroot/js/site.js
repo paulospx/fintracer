@@ -138,3 +138,26 @@ function bucketizePoints(basePoints, n) {
 
 // Example usage:
 // console.log(bucketizePoints([1, 5, 10, 15, 20, 25, 30], 3));
+
+function getCheckedValues() {
+    const checkedValues = [];
+    $('.form-check-input:checked').each(function () {
+        checkedValues.push($(this).attr('id'));
+    });
+    return checkedValues;
+}
+
+function listToCSV(strings) {
+    return strings
+        .map(str => {
+            if (str.includes('"') || str.includes(',')) {
+                return `"${str.replace(/"/g, '""')}"`;
+            }
+            return str;
+        })
+        .join(',');
+}
+
+function getCheckedValuesCSV() {
+    return listToCSV(getCheckedValues());
+}
